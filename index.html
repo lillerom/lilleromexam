@@ -6,71 +6,212 @@
     <title>Eventudvalget webudvikling eksamensprojekt</title>
     <style>
         body {
-            background-color: white;
-            color: #0083BF;
-            font-family: Arial, sans-serif;
+            background-color: #F9F6EF; /* Sætter baggrundsfarven til sand */
+            color: #041A4B; /* Sætter tekstfarven til blå */
+            font-family: Arial, sans-serif; /* Sætter skrifttypen til Arial */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Sikrer, at body fylder hele vinduet */
+            margin: 0; /* Fjerner standard margin */
         }
         header {
-            
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            
+            padding: 10px; /* Tilføjer 10px padding */
+            display: flex; /* Bruger flexbox til layout */
+            justify-content: center; /* Centrerer indholdet horisontalt */
+            align-items: center; /* Centrerer indholdet vertikalt */
+            position: relative; /* Gør det muligt at positionere menuen absolut */
         }
         .menu {
-            display: none;
+            display: none; /* Skjuler menuen som standard */
+            position: absolute; /* Positionerer menuen absolut */
+            top: 50px; /* Placerer menuen under headeren */
+            right: 10px; /* Placerer menuen til højre */
+            background-color: #041A4B; /* Sætter baggrundsfarven til mørkeblå */
+            padding: 10px; /* Tilføjer 10px padding */
+        }
+        .menu ul {
+            list-style: none; /* Fjerner punkttegn fra listen */
+            padding: 0; /* Fjerner padding fra listen */
+            margin: 0; /* Fjerner margin fra listen */
+        }
+        .menu li {
+            margin: 10px 0; /* Tilføjer margin mellem listeelementerne */
+        }
+        .menu a {
+            color: #F9F6EF; /* Sætter linkfarven til hvid */
+            text-decoration: none; /* Fjerner understregning fra links */
         }
         .hamburger {
-            cursor: pointer;
+            cursor: pointer; /* Ændrer cursoren til en pointer ved hover */
+            position: absolute; /* Positionerer hamburgeren absolut */
+            right: 10px; /* Placerer hamburgeren til højre */
         }
         .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: white;
-            margin: 5px;
+            width: 25px; /* Sætter bredden på hamburgerlinjerne */
+            height: 3px; /* Sætter højden på hamburgerlinjerne */
+            background-color: #041A4B; /* Sætter farven på hamburgerlinjerne */
+            margin: 5px; /* Tilføjer margin mellem linjerne */
+            transition: background-color 0.3s ease; /* Tilføjer en transition for farveændringen */
         }
+        .hamburger:hover div {
+            background-color: #9D0A0E; /* Skifter farven til #9D0A0E ved hover */
+        }
+
         main {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            padding: 20px;
+            display: grid; /* Bruger grid layout */
+            grid-template-columns: repeat(3, 1fr); /* Opretter tre lige store kolonner */
+            gap: 30px; /* Tilføjer 20px mellemrum mellem kolonnerne */
+            padding: 20px; /* Tilføjer 20px padding */
+            flex: 1; /* Gør main fleksibel og fylder det resterende rum */
         }
-        .column {
-            background-color: #041A4B;
-            background-color: ;
-            color: white;
-            padding: 20px;
-            border: 1px solid black;
+        .main-header {
+            grid-column: span 3; /* Gør at headeren strækker sig over alle tre kolonner */
+            text-align: center; /* Centrerer teksten */
+            margin-bottom: 20px; /* Tilføjer margin under headeren */
         }
+        .grid-item {
+            background-color: #F9F6EF; /* Sætter baggrundsfarven til hvid */
+            color: #041A4B; /* Sætter tekstfarven til mørkeblå */
+            padding: 10px; /* Tilføjer 10px padding */
+            text-align: center; /* Centrerer indholdet */
+            border-radius: 10px; /* Runder hjørnerne */
+        }
+        .grid-item img {
+            max-width: 100%; /* Sikrer, at billedet ikke overstiger kolonnens bredde */
+            height: auto; /* Bevarer billedets proportioner */
+            border: 10px solid #041A4B; /* Tilføjer en blå kant */
+            border-radius: 30px; /* Runder hjørnerne på billedet */
+            transition: transform 0.3s ease; /* Tilføjer en transition for animation */
+        }
+        .grid-item img:hover {
+            transform: scale(1.05); /* Gør billedet 5% større ved hover */
+            
+        }
+
+        footer {
+            background-color: #041A4B; /* Sætter baggrundsfarven til mørkeblå */
+            color: white; /* Sætter tekstfarven til hvid */
+            text-align: center; /* Centrerer teksten */
+            padding: 10px; /* Tilføjer 10px padding */
+            position: sticky; /* Gør footeren sticky */
+            bottom: 0; /* Placerer footeren i bunden */
+            width: 100%; /* Sikrer, at footeren fylder hele bredden */
+        }
+        
+        footer a {
+            color: #B2DFD3; /* Sætter linkfarven til #B2DFD3 */
+            text-decoration: none; /* Fjerner understregning fra links */
+            transition: color 0.3s ease; /* Tilføjer en transition for farveændringen */
+        }
+
+        footer a:hover {
+            color: #88C4DE; /* Skifter farven til #88C4DE ved hover */
+        }
+       
     </style>
 </head>
 <body>
     <header>
-        <h1>Eventudvalget HTX Hillerød</h1>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
+        <h1>Eventudvalget HTX Hillerød</h1> <!-- Header titel -->
+        <div class="hamburger" onclick="toggleMenu()"> <!-- Hamburger menu, der kan klikkes på -->
+            <div></div> <!-- Første linje i hamburger menuen -->
+            <div></div> <!-- Anden linje i hamburger menuen -->
+            <div></div> <!-- Tredje linje i hamburger menuen -->
         </div>
         <nav class="menu">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#">Home</a></li> <!-- Link til Home -->
+                <li><a href="#">About</a></li> <!-- Link til About -->
+                <li><a href="#">Contact</a></li> <!-- Link til Contact -->
             </ul>
         </nav>
     </header>
     <main>
-        <div class="column">Kolonne 1</div>
-        <div class="column">Kolonne 2</div>
-        <div class="column">Kolonne 3</div>
+        <h1 class="main-header"style="color: #9D0A0E;">Klubber</h1>
+        
+        <!-- Centreret header i main -->
+        <div class="grid-item">
+            <h2>Brætspilscaféen</h2> <!-- H2 i første grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Brætspilscaféen"> <!-- Billede i første grid-item -->
+            </a>
+            <p>En hyggelig café hvor du kan spille brætspil med venner.</p> <!-- Beskrivelse i første grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Gokartklubben</h2> <!-- H2 i anden grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Gokartklubben"> <!-- Billede i anden grid-item -->
+            </a>
+            <p>Få adrenalinen op med gokartkørsel.</p> <!-- Beskrivelse i anden grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Kreaklubben</h2> <!-- H2 i tredje grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Kreaklubben"> <!-- Billede i tredje grid-item -->
+            </a>
+            <p>Udfold din kreativitet med forskellige projekter.</p> <!-- Beskrivelse i tredje grid-item -->
+        </div>
+    
+        <!-- Kopieret sektion -->
+        <div class="grid-item">
+            <h2>Brætspilscaféen</h2> <!-- H2 i første grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Brætspilscaféen"> <!-- Billede i første grid-item -->
+            </a>
+            <p>En hyggelig café hvor du kan spille brætspil med venner.</p> <!-- Beskrivelse i første grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Gokartklubben</h2> <!-- H2 i anden grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Gokartklubben"> <!-- Billede i anden grid-item -->
+            </a>
+            <p>Få adrenalinen op med gokartkørsel.</p> <!-- Beskrivelse i anden grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Kreaklubben</h2> <!-- H2 i tredje grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Kreaklubben"> <!-- Billede i tredje grid-item -->
+            </a>
+            <p>Udfold din kreativitet med forskellige projekter.</p> <!-- Beskrivelse i tredje grid-item -->
+        </div>
+    
+        <!-- Endnu en kopieret sektion -->
+        <div class="grid-item">
+            <h2>Brætspilscaféen</h2> <!-- H2 i første grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Brætspilscaféen"> <!-- Billede i første grid-item -->
+            </a>
+            <p>En hyggelig café hvor du kan spille brætspil med venner.</p> <!-- Beskrivelse i første grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Gokartklubben</h2> <!-- H2 i anden grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Gokartklubben"> <!-- Billede i anden grid-item -->
+            </a>
+            <p>Få adrenalinen op med gokartkørsel.</p> <!-- Beskrivelse i anden grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Kreaklubben</h2> <!-- H2 i tredje grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Kreaklubben"> <!-- Billede i tredje grid-item -->
+            </a>
+            <p>Udfold din kreativitet med forskellige projekter.</p> <!-- Beskrivelse i tredje grid-item -->
+        </div>
     </main>
+
+    <footer>
+        <p>Kontakt Eventudvalget HTX Hillerød ved at skrive til Linda Rom på: <a href="mailto:dinemail@eksempel.com">LIRO@unord.dk</a></p>
+    </footer>
+
     <script>
-        function toggleMenu() {
-            const menu = document.querySelector('.menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        function toggleMenu() { 
+            // Funktion til at vise/skjule menuen
+            const menu = document.querySelector('.menu'); 
+            // Finder menuen
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block'; 
+            // Skifter mellem at vise og skjule menuen
         }
     </script>
+ 
 </body>
 </html>
