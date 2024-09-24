@@ -64,11 +64,24 @@
             gap: 30px;
             padding: 20px;
             flex: 1;
+        
+            @media (max-width: 1024px) {
+            main {
+                grid-template-columns: repeat(2, 1fr); /* Skifter til to kolonner layout på mellemstore skærme */
+            }
+        }
+
+        @media (max-width: 393px) {
+            main {
+                grid-template-columns: 1fr; /* Skifter til en enkelt kolonne layout på mindre skærme */
+           
+            }
         }
         .main-header {
             grid-column: span 3;
             text-align: center;
             margin-bottom: 20px;
+        }
         }
         .grid-item {
             background-color: #F9F6EF;
@@ -108,18 +121,6 @@
             color: #88C4DE;
         }
 
-        @media (max-width: 1024px) {
-            main {
-                grid-template-columns: repeat(2, 1fr); /* Skifter til to kolonner layout på mellemstore skærme */
-            }
-        }
-
-        @media (max-width: 393px) {
-            main {
-                grid-template-columns: 1fr; /* Skifter til en enkelt kolonne layout på mindre skærme */
-           
-            }
-        }
     </style>
 </head>
 <body>
