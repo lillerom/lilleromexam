@@ -108,15 +108,16 @@
             color: #88C4DE;
         }
 
+        @media (max-width: 1024px) {
+            main {
+                grid-template-columns: repeat(2, 1fr); /* Skifter til to kolonner layout på mellemstore skærme */
+            }
+        }
+
         @media (max-width: 768px) {
             main {
                 grid-template-columns: 1fr; /* Skifter til en enkelt kolonne layout på mindre skærme */
-            }
-            .menu {
-                display: block; /* Viser menuen på mindre skærme */
-            }
-            .hamburger {
-                display: block; /* Viser hamburger menuen på mindre skærme */
+           
             }
         }
     </style>
@@ -138,6 +139,7 @@
         </nav>
     </header>
     
+
     
 
     <main>
@@ -214,9 +216,9 @@
     </main>
 
     <footer>
-        <p>© 2024 Eventudvalget HTX Hillerød</p>
-        <p><a href="#">Kontakt os</a></p>
+        <p>Kontakt Eventudvalget HTX Hillerød ved at skrive til formand Linda Rom på <a href="mailto:LIRO@unord.dk">LIRO@unord.dk</a></p>
     </footer>
+    
     <script>
         
         function toggleMenu() { 
