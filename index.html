@@ -4,156 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventudvalget webudvikling eksamensprojekt</title>
+    <link id="theme-link" rel="stylesheet" href="normal.css">
     <link rel="icon" href="images\eventuikon.png" type="image/x-icon">
-    <style>
-        body {
-            background-color: #F9F6EF;
-            color: #041A4B;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            margin: 0;
-            
-        }
-        header {
-            padding: 35px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            flex-wrap: wrap; /* Tillader indholdet at bryde til næste linje */
-        }
-        header .logo {
-            height: 80px; /* Sætter logoets højde */
-            margin-right: 20px; /* Tilføjer margin til højre for at adskille det fra teksten */
-            position:absolute;
-            top: 20px;
-            left: 10px;
-            Padding: 10px;
-        }
-        header h1 {
-            margin: 0; /* Fjerner standard margin fra h1 */
-            font-size: 3em; /* Juster skriftstørrelsen */
-        }
     
-        .menu {
-            display: none;
-            position: absolute;
-            top: 50px;
-            right: 10px;
-            background-color: #041A4B;
-            padding: 10px;
-        }
-        .menu ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .menu li {
-            margin: 10px 0;
-        }
-        .menu a {
-            color: #F9F6EF;
-            text-decoration: none;
-        }
-        .hamburger {
-            cursor: pointer;
-            position: absolute;
-            right: 10px;
-        }
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: #041A4B;
-            margin: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .hamburger:hover div {
-            background-color: #9D0A0E;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr repeat(3, 1fr) 1fr;
-            gap: 10px;
-            padding: 10px;
-            flex: 1;
-        }
-
-        .main-header {
-            grid-column: span 3;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .grid-item {
-            background-color: #F9F6EF;
-            color: #041A4B;
-            padding: 10px;
-            text-align: center;
-            border-radius: 10px;
-        }
-        .empty {
-            background-color: transparent;
-            border: none;
-        }
-
-        .grid-item img {
-            max-width: 100%;
-            height: auto;
-            border: 7px solid #041A4B;
-            border-radius: 80px;
-            transition: transform 0.3s ease;
-        }
-        .grid-item img:hover {
-            transform: scale(1.05);
-        }
-
-        footer {
-            background-color: #041A4B;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: sticky;
-            bottom: 0;
-            width: 100%;
-        }
-        
-        footer a {
-            color: #B2DFD3;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-            color: #88C4DE;
-        }
-        @media (max-width: 600px) {
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
-            .empty {
-                display: none;
-            }
-            header .logo {
-                display: none;
-            }
-            .hamburger {
-                display: block; /* Viser hamburgermenuen på små skærme */
-                top: 10px; /* Placerer hamburgermenuen i øverste højre hjørne */
-                right: 10px;
-            }
-
-        }
-
-    </style>
 </head>
 <body>
     <header>
         <a href="index.html">
             
-            <img src="images/eventulogo.png" alt="I Live ApS Logo" class="logo">
+            <img id="logo" src="images/eventulogo.png" alt="Eventudvalgets Logo" class="logo">
         </a>
         <h1>Eventudvalget HTX Hillerød</h1>
         <div class="hamburger" onclick="toggleMenu()">
@@ -161,6 +20,13 @@
             <div></div>
             <div></div>
         </div>
+        
+        <div class="search-container"></div>
+            <input type="text" id="search" placeholder="Søg på sitet...">
+            <button onclick="searchSite()">Søg</button>
+            <button onclick="toggleTheme()">Skift Tema</button>
+        </div>
+
         <nav class="menu">
             <ul>
                 <li><a href="#">Home</a></li>
@@ -264,7 +130,27 @@
             menu.style.display = menu.style.display === 'block' ? 'none' : 'block'; 
             // Skifter mellem at vise og skjule menuen
         }
+    
+        function toggleTheme() {
+            const themeLink = document.getElementById('theme-link');
+            const logo = document.getElementById('logo');
+            const currentTheme = themeLink.getAttribute('href');
+            const newTheme = currentTheme === 'normal.css' ? 'dark.css' : 'normal.css';
+            themeLink.setAttribute('href', newTheme);
+            
+            // Skift logo baseret på tema
+            if (newTheme === 'dark.css') {
+                logo.setAttribute('src', 'images/eventulogodarkmode.png');
+            } else {
+                logo.setAttribute('src', 'images/eventulogo.png');
+            }
+        }
+        function searchSite() {
+            const query = document.getElementById('search').value;
+            if (query) {
+                window.find(query);
+            }
+        }
     </script>
- 
 </body>
 </html>

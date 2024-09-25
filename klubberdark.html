@@ -7,8 +7,8 @@
     <link rel="icon" href="images\eventuikon.png" type="image/x-icon">
     <style>
         body {
-            background-color: #F9F6EF;
-            color: #041A4B;
+            background-color: #041A4B;
+            color: #B2DFD3;
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
@@ -40,9 +40,9 @@
         .menu {
             display: none;
             position: absolute;
-            top: 50px;
+            top: 100px;
             right: 10px;
-            background-color: #041A4B;
+            background-color: #B2DFD3;
             padding: 10px;
         }
         .menu ul {
@@ -54,7 +54,7 @@
             margin: 10px 0;
         }
         .menu a {
-            color: #F9F6EF;
+            color:#041A4B;
             text-decoration: none;
         }
         .hamburger {
@@ -65,12 +65,13 @@
         .hamburger div {
             width: 25px;
             height: 3px;
-            background-color: #041A4B;
+            background-color: #B2DFD3;
             margin: 5px;
             transition: background-color 0.3s ease;
         }
         .hamburger:hover div {
-            background-color: #9D0A0E;
+            border-color:#64C295;
+            background-color: #64C295;
         }
 
         .grid-container {
@@ -88,8 +89,8 @@
         }
 
         .grid-item {
-            background-color: #F9F6EF;
-            color: #041A4B;
+            background-color: #041A4B;
+            color: #B2DFD3;
             padding: 10px;
             text-align: center;
             border-radius: 10px;
@@ -102,17 +103,18 @@
         .grid-item img {
             max-width: 100%;
             height: auto;
-            border: 7px solid #041A4B;
+            border: 7px solid #B2DFD3;
             border-radius: 80px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
         .grid-item img:hover {
             transform: scale(1.05);
+            border-color:#64C295;
         }
 
         footer {
             background-color: #041A4B;
-            color: white;
+            color: #B2DFD3;
             text-align: center;
             padding: 10px;
             position: sticky;
@@ -121,13 +123,13 @@
         }
         
         footer a {
-            color: #B2DFD3;
+            color: #88C4DE;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         footer a:hover {
-            color: #88C4DE;
+            color: #64C295;
         }
         @media (max-width: 600px) {
             .grid-container {
@@ -153,7 +155,7 @@
     <header>
         <a href="index.html">
             
-            <img src="images/eventulogo.png" alt="I Live ApS Logo" class="logo">
+            <img src="images/eventulogodarkmode.png" alt="I Live ApS Logo" class="logo">
         </a>
         <h1>Eventudvalget HTX Hillerød</h1>
         <div class="hamburger" onclick="toggleMenu()">
