@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventudvalget webudvikling eksamensprojekt</title>
+    <link rel="icon" href="images\eventuikon.png" type="image/x-icon">
     <style>
         body {
             background-color: #F9F6EF;
@@ -22,6 +23,16 @@
             position: relative;
             flex-wrap: wrap; /* Tillader indholdet at bryde til næste linje */
         }
+        header .logo {
+            height: 80px; /* Sætter logoets højde */
+            margin-right: 20px; /* Tilføjer margin til højre for at adskille det fra teksten */
+            position:absolute;
+            top: 30px;
+            left: 10px;
+            Padding: 10px;
+        }
+       
+    
         .menu {
             display: none;
             position: absolute;
@@ -65,8 +76,6 @@
             padding: 10px;
             flex: 1;
         }
-
-        
 
         .main-header {
             grid-column: span 3;
@@ -129,6 +138,10 @@
 </head>
 <body>
     <header>
+        <a href="index.html">
+            
+            <img src="images/eventulogo.png" alt="I Live ApS Logo" class="logo">
+        </a>
         <h1>Eventudvalget HTX Hillerød</h1>
         <div class="hamburger" onclick="toggleMenu()">
             <div></div>
