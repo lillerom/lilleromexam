@@ -6,7 +6,30 @@
     <title>Eventudvalget webudvikling eksamensprojekt</title>
     <link id="theme-link" rel="stylesheet" href="normal.css">
     <link rel="icon" href="images\eventuikon.png" type="image/x-icon">
-    
+    <style>
+        .top-right-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 10px;
+            align-items: center;
+            justify-content: end;
+        }
+       
+        
+        #theme-toggle {
+            width: 38px;
+            height: 38px;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        .search-container input {
+            margin-right: 5px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -15,16 +38,17 @@
             <img id="logo" src="images/eventulogo.png" alt="Eventudvalgets Logo" class="logo">
         </a>
         <h1>Eventudvalget HTX Hillerød</h1>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        
-        <div class="search-container"></div>
-            <input type="text" id="search" placeholder="Søg på sitet...">
-            <button onclick="searchSite()">Søg</button>
-            <button onclick="toggleTheme()">Skift Tema</button>
+        <div class="top-right-container"></div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <img id="theme-toggle" src="images/maane.png" alt="Skift Tema" onclick="toggleTheme()">
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Søg på sitet...">
+                <button onclick="searchSite()">Søg</button>
+            </div>
         </div>
 
         <nav class="menu">
@@ -134,17 +158,23 @@
         function toggleTheme() {
             const themeLink = document.getElementById('theme-link');
             const logo = document.getElementById('logo');
+            const themeToggle = document.getElementById('theme-toggle');
             const currentTheme = themeLink.getAttribute('href');
             const newTheme = currentTheme === 'normal.css' ? 'dark.css' : 'normal.css';
             themeLink.setAttribute('href', newTheme);
             
-            // Skift logo baseret på tema
-            if (newTheme === 'dark.css') {
+           
+          // Skift okon og logo baseret på tema
+          if (newTheme === 'dark.css') {
                 logo.setAttribute('src', 'images/eventulogodarkmode.png');
+                themeToggle.setAttribute('src', 'images/sol.png');
             } else {
                 logo.setAttribute('src', 'images/eventulogo.png');
+                themeToggle.setAttribute('src', 'images/maane.png');
             }
         }
+
+
         function searchSite() {
             const query = document.getElementById('search').value;
             if (query) {

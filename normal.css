@@ -30,23 +30,9 @@
         font-size: 3em; /* Juster skriftstørrelsen */
     }
 
-    .search-container {
-        display: flex;
-        align-items: center;
-        position: relative;
-        top: 20px;
-        right: 10px;
-        font-size: 1.2em; /* Større skrifttype */
-    }
-    .search-container input[type="text"] {
-        padding: 5px;
-        font-size: 1.2em;
-    }
-    .search-container button {
-        padding: 5px 10px;
-        font-size: 1em;
-        margin-left: 10px;
-    }
+ 
+  
+    
     .grid-container {
         display: grid;
         grid-template-columns: 1fr repeat(3, 1fr) 1fr;
@@ -86,6 +72,8 @@
         background-color: #041A4B;
         margin: 5px;
         transition: background-color 0.3s ease;
+
+
     }
     .hamburger:hover div {
         background-color: #0183BF;
