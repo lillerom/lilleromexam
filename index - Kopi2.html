@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="da">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventudvalget webudvikling eksamensprojekt</title>
+    <link id="theme-link" rel="stylesheet" href="normal.css">
+    <link rel="icon" href="images/eventuikon.png" type="image/x-icon">
+    <style>
+        header {
+            padding: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            flex-wrap: wrap; /* Tillader indholdet at bryde til næste linje */
+        }
+        header .logo {
+            height: 80px; /* Sætter logoets højde */
+            width: auto;
+            position:absolute;
+            top: 20px;
+            left: 10px;
+            Padding: 10px;
+        }
+        header h1 {
+            margin: 2px; /* Fjerner standard margin fra h1 */
+            font-size: 3em; /* Juster skriftstørrelsen */
+        }
+
+        #theme-toggle {
+            width: auto;
+            height: 40px;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+            display: flex;
+            justify-content: center; /* Centrerer tema-knappen i sin kolonne */
+        }
+        #theme-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #f1f1f1;
+            border-radius: 25px;
+            padding: 5px 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 250px; /* Juster bredden efter behov */
+        }   
+        .search-container input {
+            border: none;
+            outline: none;
+            background: none;
+            padding: 5px;
+            font-size: 1em;
+            color: #333;
+            flex-grow: 0.5;
+        }
+
+       
+        .search-container button {
+            border: none;
+            background-color: #041A4B;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .search-container button:hover {
+            background-color: #0183BF;
+        }
+
+    </style>
+    </head>
+        
+<body>
+    <header>
+        <!-- Placerer logoet i den første kolonne (1fr) -->
+        
+        <a href="index.html">
+            <img id="logo" src="images/eventulogo.png" alt="Logo" class="logo">
+        </a>
+        
+        
+        <!-- Placerer overskriften i den anden kolonne (3fr) -->
+        <h1>Eventudvalget HTX Hillerød</h1>
+        
+        <!-- Placerer de resterende elementer i den tredje kolonne (1fr) -->
+        <div class="top-right-container"></div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div></div>
+                <img id="theme-toggle" src="images/maane.png" alt="Skift Tema" onclick="toggleTheme()">
+            </div>
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Søg på sitet...">
+                <button onclick="searchSite()">Søg</button>
+            </div>
+            
+        </div>
+    </header>
+   
+    <main class="grid-container">
+        
+        
+        <!-- Centreret header i main -->
+        <div class="grid-item empty"></div>
+        <div class="grid-item">
+            <h2>Brætspilscaféen</h2> <!-- H2 i første grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Brætspilscaféen"> <!-- Billede i første grid-item -->
+            </a>
+            <p>En hyggelig café hvor du kan spille brætspil med venner.</p> <!-- Beskrivelse i første grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Gokartklubben</h2> <!-- H2 i anden grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Gokartklubben"> <!-- Billede i anden grid-item -->
+            </a>
+            <p>Få adrenalinen op med gokartkørsel.</p> <!-- Beskrivelse i anden grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Kreaklubben</h2> <!-- H2 i tredje grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Kreaklubben"> <!-- Billede i tredje grid-item -->
+            </a>
+            <p>Udfold din kreativitet med forskellige projekter.</p> <!-- Beskrivelse i tredje grid-item -->
+        </div>
+        <div class="grid-item empty"></div>
+        <div class="grid-item empty"></div>
+
+        <!-- Kopieret sektion -->
+        <div class="grid-item">
+            <h2>Brætspilscaféen</h2> <!-- H2 i første grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Brætspilscaféen"> <!-- Billede i første grid-item -->
+            </a>
+            <p>En hyggelig café hvor du kan spille brætspil med venner.</p> <!-- Beskrivelse i første grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Gokartklubben</h2> <!-- H2 i anden grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Gokartklubben"> <!-- Billede i anden grid-item -->
+            </a>
+            <p>Få adrenalinen op med gokartkørsel.</p> <!-- Beskrivelse i anden grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Kreaklubben</h2> <!-- H2 i tredje grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Kreaklubben"> <!-- Billede i tredje grid-item -->
+            </a>
+            <p>Udfold din kreativitet med forskellige projekter.</p> <!-- Beskrivelse i tredje grid-item -->
+        </div>
+        <div class="grid-item empty"></div>
+        <div class="grid-item empty"></div>
+
+        <!-- Endnu en kopieret sektion -->
+        <div class="grid-item">
+            <h2>Brætspilscaféen</h2> <!-- H2 i første grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Brætspilscaféen"> <!-- Billede i første grid-item -->
+            </a>
+            <p>En hyggelig café hvor du kan spille brætspil med venner.</p> <!-- Beskrivelse i første grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Gokartklubben</h2> <!-- H2 i anden grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Gokartklubben"> <!-- Billede i anden grid-item -->
+            </a>
+            <p>Få adrenalinen op med gokartkørsel.</p> <!-- Beskrivelse i anden grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Kreaklubben</h2> <!-- H2 i tredje grid-item -->
+            <a href="index.html">
+                <img src="images/braetspilscafeen.png" alt="Kreaklubben"> <!-- Billede i tredje grid-item -->
+            </a>
+            <p>Udfold din kreativitet med forskellige projekter.</p> <!-- Beskrivelse i tredje grid-item -->
+        </div>
+        <div class="grid-item empty"></div>
+        
+
+    </main>
+
+    <footer>
+        <p>Skriv til eventudvalgets formand Linda Rom på <a href="mailto:LIRO@unord.dk">LIRO@unord.dk</a></p>
+    </footer>
+    
+    <script>
+        
+        function toggleMenu() { 
+            // Funktion til at vise/skjule menuen
+            const menu = document.querySelector('.menu'); 
+            // Finder menuen
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block'; 
+            // Skifter mellem at vise og skjule menuen
+        }
+    
+        function toggleTheme() {
+            const themeLink = document.getElementById('theme-link');
+            const logo = document.getElementById('logo');
+            const themeToggle = document.getElementById('theme-toggle');
+            const currentTheme = themeLink.getAttribute('href');
+            const newTheme = currentTheme === 'normal.css' ? 'dark.css' : 'normal.css';
+            themeLink.setAttribute('href', newTheme);
+            
+           
+          // Skift okon og logo baseret på tema
+          if (newTheme === 'dark.css') {
+                logo.setAttribute('src', 'images/eventulogodarkmode.png');
+                themeToggle.setAttribute('src', 'images/sol.png');
+            } else {
+                logo.setAttribute('src', 'images/eventulogo.png');
+                themeToggle.setAttribute('src', 'images/maane.png');
+            }
+        }
+
+
+        function searchSite() {
+            const query = document.getElementById('search').value;
+            if (query) {
+                window.find(query);
+            }
+        }
+    </script>
+</body>
+</html>

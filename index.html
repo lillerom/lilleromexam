@@ -1,68 +1,160 @@
 <!DOCTYPE html>
 <html lang="da">
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventudvalget webudvikling eksamensprojekt</title>
     <link id="theme-link" rel="stylesheet" href="normal.css">
-    <link rel="icon" href="images\eventuikon.png" type="image/x-icon">
+    <link rel="icon" href="images/eventuikon.png" type="image/x-icon">
     <style>
-        .top-right-container {
+        header h1 {
+            padding: 1px;
+            font-size: 3em; /* Justerer skriftstørrelsen til en stor størrelse for h1. */
+        }
+
+        .header {
             display: grid;
-            grid-template-columns: auto auto auto;
-            gap: 10px;
-            align-items: center;
-            justify-content: end;
+            grid-template-columns: 1fr 3fr 1fr; /* Definerer layoutet med tre kolonner i forholdene 1:3:1. */
+            padding: 1px; /* Padding er den indvendige afstand fra indholdet af elementet til elementets kant (altså, hvad der er inden i elementets rammer). */
+            align-items: center; /* Vertikalt centrerer elementerne i hver kolonne. */
+            justify-items: center; /* Horisontalt centrerer elementerne i hver kolonne. */
+            position: relative; /* Elementet placeres i forhold til dets normale position, og man kan flytte det med `top`, `left`, `right`, eller `bottom`. 
+                                Bruges ofte som referencepunkt for børn med `position: absolute`. */
         }
-       
-        
+
+        .column-1 img {
+            max-width: 100%; /* Sørger for, at billedet ikke overstiger forælderens bredde. */
+            height: auto; /* Bevarer billedets proportioner. */
+        }
+
+        .logo {
+            height: auto; /* Sørger for, at logoet skalerer korrekt med bredden. */
+            width: 100%; /* Fylder hele bredden af containeren. */
+            justify-self: start; /* Justerer logoet til venstre i sin kolonne. */
+            padding: 10px; /* Indvendig polstring omkring logoet, skaber plads mellem logoet og containerens kant. */
+        }
+
+        .column-2 {
+            padding: 1px; /* Mindre padding, der skaber lidt indvendig plads i kolonne 2. Kan måske være lidt for lille, hvis du ønsker mere luft. */
+        }
+
+        .column-3 {
+            padding: 1px; /* Samme her som i kolonne 2, det er meget lidt padding, overvej om der skal mere plads her. */
+            max-width: 100%;
+        }
+
+        .nested-columns {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr; /* Definerer tre kolonner inde i kolonne 3 med størrelsesforholdene 1:2:1. */
+            gap: 2px; /* Laver lidt mellemrum mellem de nested kolonner, for at forhindre dem i at være for tæt på hinanden. */
+            max-width: 100%; /* Sørger for, at de nested kolonner ikke overskrider deres forælder containers bredde. */
+        }
+
+        .nested-column {
+            max-width: 100%; /* Forhindrer hver nested kolonne i at blive bredere end deres container. */
+        }
+
         #theme-toggle {
-            width: 38px;
-            height: 38px;
-            cursor: pointer;
-            transition: opacity 0.5s ease;
+            width: auto; /* Bredde justeres automatisk baseret på billedets størrelse. */
+            height: 40px; /* Fast højde på tema-knappen. */
+            cursor: pointer; /* Skifter musemarkøren til en pointer, hvilket indikerer, at elementet er klikbart. */
+            transition: opacity 0.5s ease; /* Gør overgange for opacity glidende over 0.5 sekunder. */
+            display: flex;
+            justify-content: center; /* Centrerer tema-knappen horisontalt i sin kolonne. */
+            align-items: center; /* Centrerer tema-knappen vertikalt i sin kolonne. */
         }
+
+        #theme-toggle:hover {
+            transform: scale(1.05); /* Forstørrer tema-knappen en smule ved hover. */
+        }
+
         .search-container {
             display: flex;
-            align-items: center;
-        }
-        .search-container input {
-            margin-right: 5px;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <a href="index.html">
+            align-items: center; /* Vertikal centring af elementerne i søgefeltet. */
+            justify-content: center; /* Horisontal centring af hele søgecontaineren. */
+            background-color: #f1f1f1; /* Lysegrå baggrund for søgecontaineren. */
+            border-radius: 25px; /* Runde hjørner på søgecontaineren. */
+            padding: 5px 2px; /* Indvendig afstand mellem containerens kant og dens indhold. Det er her, du kan justere pladsen inde i containeren. */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tilføjer en svag skygge for dybdeeffekt. */
+            max-width: 100%; /* Sørger for, at containeren ikke overskrider sin forælders bredde. */
             
-            <img id="logo" src="images/eventulogo.png" alt="Eventudvalgets Logo" class="logo">
-        </a>
-        <h1>Eventudvalget HTX Hillerød</h1>
-        <div class="top-right-container"></div>
-            <div class="hamburger" onclick="toggleMenu()">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <img id="theme-toggle" src="images/maane.png" alt="Skift Tema" onclick="toggleTheme()">
-            <div class="search-container">
-                <input type="text" id="search" placeholder="Søg på sitet...">
-                <button onclick="searchSite()">Søg</button>
-            </div>
-        </div>
+        }
 
-        <nav class="menu">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+        .search-container input {
+            border: none; /* Ingen kantlinje omkring inputfeltet. */
+            outline: none; /* Fjerner den standard omrids, der normalt vises, når inputfeltet er i fokus. */
+            background: none; /* Ingen baggrund for inputfeltet. */
+            padding: 1px; /* Indvendig plads i inputfeltet. */
+            font-size: 1em; /* Skriftstørrelse i inputfeltet. */
+            color: #333; /* Skriftfarve i inputfeltet. */
+            min-width: 50px;  /* Mindst 50px bredt */
+            max-width: 120px; /* Højst 150px bredt */
+            margin-right: 10px; /* Laver lidt afstand mellem inputfeltet og søgeknappen. */
+           
+        }
+
+        .search-container button {
+            border: none; /* Ingen kantlinje for knappen. */
+            background-color: #041A4B; /* Mørkeblå baggrundsfarve. */
+            color: white; /* Hvid tekstfarve for knappen. */
+            padding: 5px 15px; /* Indvendig plads i knappen, som skaber plads mellem tekst og kant. */
+            border-radius: 20px; /* Runde hjørner på knappen. */
+            cursor: pointer; /* Skifter markøren til en pointer ved hover, hvilket viser, at det er klikbart. */
+            transition: background-color 0.3s ease; /* Gør farveskift ved hover glidende. */
+            
+        }
+
+        .search-container button:hover {
+            background-color: #0183BF; /* Lysere blå baggrund ved hover. */
+        }
+
+        
+    </style>
+    </head>
+        
+<body>
+    <header class="header">
+        <div class="column column-1">
+            <a href="index.html">
+                <img id="logo" src="images/eventulogo.png" alt="Logo" class="logo">
+            </a>
+        </div>
+        <div class="column column-2">
+            <h1>Eventudvalget HTX Hillerød</h1>
+        </div>
+        <div class="column column-3">
+            <div class="nested-columns">
+                <div class="nested-column nested-column-1">
+                    <img id="theme-toggle" src="images/maane.png" alt="Skift Tema" onclick="toggleTheme()">
+                </div>
+                <div class="nested-column nested-column-2">
+                    <div class="search-container">
+                        <input type="text" id="search" placeholder="Søg på sitet...">
+                        <button onclick="searchSite()">Søg</button>
+                    </div>
+                </div>
+                <div class="nested-column nested-column-3">
+                    <div class="hamburger" onclick="toggleMenu()"> <!-- Hamburger-ikon med klikfunktion -->
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="menu" id="menu"> <!-- Menu der åbner med hamburgeren -->
+                        <ul>
+                            <li><a href="#">Link 1</a></li> <!-- Menu link 1 -->
+                            <li><a href="#">Link 2</a></li> <!-- Menu link 2 -->
+                            <li><a href="#">Link 3</a></li> <!-- Menu link 3 -->
+                        </ul>
+                    </div>
+                </div>
+            </div>    
+        </div>
     </header>
+    
+    
+    
    
     <main class="grid-container">
-        
-        
         <!-- Centreret header i main -->
         <div class="grid-item empty"></div>
         <div class="grid-item">
