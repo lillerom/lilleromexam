@@ -35,6 +35,7 @@
         }
 
         .column-2 {
+            display:flex;
             padding: 1px; /* Mindre padding, der skaber lidt indvendig plads i kolonne 2. Kan måske være lidt for lille, hvis du ønsker mere luft. */
         }
 
@@ -45,7 +46,7 @@
 
         .nested-columns {
             display: grid;
-            grid-template-columns: 1fr 2fr 1fr; /* Definerer tre kolonner inde i kolonne 3 med størrelsesforholdene 1:2:1. */
+            grid-template-columns: 3fr 1fr; /* Definerer tre kolonner inde i kolonne 3 med størrelsesforholdene 1:2:1. har lavet det om til to med 3:1*/
             gap: 2px; /* Laver lidt mellemrum mellem de nested kolonner, for at forhindre dem i at være for tæt på hinanden. */
             max-width: 100%; /* Sørger for, at de nested kolonner ikke overskrider deres forælder containers bredde. */
         }
@@ -53,21 +54,32 @@
         .nested-column {
             max-width: 100%; /* Forhindrer hver nested kolonne i at blive bredere end deres container. */
         }
+        .container {
+            display: flex;
+            align-items: center;
+        }
+
+        .title {
+            margin-right: 5px;
+        }
+
+        .image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
         #theme-toggle {
             width: auto; /* Bredde justeres automatisk baseret på billedets størrelse. */
             height: 40px; /* Fast højde på tema-knappen. */
             cursor: pointer; /* Skifter musemarkøren til en pointer, hvilket indikerer, at elementet er klikbart. */
             transition: opacity 0.5s ease; /* Gør overgange for opacity glidende over 0.5 sekunder. */
-            display: flex;
-            justify-content: center; /* Centrerer tema-knappen horisontalt i sin kolonne. */
-            align-items: center; /* Centrerer tema-knappen vertikalt i sin kolonne. */
         }
 
         #theme-toggle:hover {
             transform: scale(1.05); /* Forstørrer tema-knappen en smule ved hover. */
         }
-
+        
         .search-container {
             display: flex;
             align-items: center; /* Vertikal centring af elementerne i søgefeltet. */
@@ -88,7 +100,7 @@
             font-size: 1em; /* Skriftstørrelse i inputfeltet. */
             color: #333; /* Skriftfarve i inputfeltet. */
             min-width: 50px;  /* Mindst 50px bredt */
-            max-width: 120px; /* Højst 150px bredt */
+            max-width: 100%; /* Højst 150px bredt */
             margin-right: 10px; /* Laver lidt afstand mellem inputfeltet og søgeknappen. */
            
         }
@@ -120,20 +132,24 @@
             </a>
         </div>
         <div class="column column-2">
-            <h1>Eventudvalget HTX Hillerød</h1>
+            <div class="container">
+                <div class="title">
+                    <h1>Eventudvalget HTX Hillerød</h1>
+                </div>
+                <div class="image">
+                    <img id="theme-toggle" src="images/maane.png" alt="Skift Tema" onclick="toggleTheme()">
+                </div>
+            </div>
         </div>
         <div class="column column-3">
             <div class="nested-columns">
                 <div class="nested-column nested-column-1">
-                    <img id="theme-toggle" src="images/maane.png" alt="Skift Tema" onclick="toggleTheme()">
-                </div>
-                <div class="nested-column nested-column-2">
                     <div class="search-container">
                         <input type="text" id="search" placeholder="Søg på sitet...">
                         <button onclick="searchSite()">Søg</button>
                     </div>
                 </div>
-                <div class="nested-column nested-column-3">
+                <div class="nested-column nested-column-2">
                     <div class="hamburger" onclick="toggleMenu()"> <!-- Hamburger-ikon med klikfunktion -->
                         <div></div>
                         <div></div>
