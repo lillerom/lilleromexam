@@ -129,5 +129,21 @@
             display: none;
 
         }
+        .search-container input {
+            display: none;
+            
+           
+        }
+
+        .search-container button {
+            display: none;
+            
+        }
+
+        .search-container button:hover {
+            display: none;
+            
+        }
+
     }
 
