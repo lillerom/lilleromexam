@@ -152,4 +152,13 @@
             padding: 1px;
             font-size: 1em; /* Justerer skriftstørrelsen til en stor størrelse for h1. */
         }
+        .header {
+            display: grid;
+            grid-template-columns: 1fr; /* Definerer layoutet med tre kolonner i forholdene 1:3:1. */
+            padding: 1px; /* Padding er den indvendige afstand fra indholdet af elementet til elementets kant (altså, hvad der er inden i elementets rammer). */
+            align-items: center; /* Vertikalt centrerer elementerne i hver kolonne. */
+            justify-items: center; /* Horisontalt centrerer elementerne i hver kolonne. */
+            position: relative; /* Elementet placeres i forhold til dets normale position, og man kan flytte det med `top`, `left`, `right`, eller `bottom`. 
+                                Bruges ofte som referencepunkt for børn med `position: absolute`. */
+        }
     }
