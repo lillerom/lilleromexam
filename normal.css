@@ -120,65 +120,81 @@
     @media (max-width: 600px) {
         .header {
             display: grid;
-            grid-template-columns: 1fr; /* Ændrer layoutet til en enkelt kolonne */
-            grid-gap: 10px; /* Tilføjer lidt afstand mellem elementerne */
+            grid-template-columns: 1fr; /* Enkelt kolonne */
+            grid-gap: 10px;
             justify-items: center; /* Centrerer elementerne */
         }
     
-        /* Viser logoet først */
+        /* Logoet vises øverst */
         .logo {
             display: block;
+            width: 100px; /* Tilpas logoets størrelse */
             margin-bottom: 10px;
         }
     
-        /* Titel vises under logoet */
+        /* Titel under logoet */
         .title {
-            display: block;
-            font-size: 1.2rem; /* Mindre fontstørrelse til små skærme */
+            font-size: 1.2rem; /* Justerer fontstørrelsen */
             text-align: center; /* Centrerer titlen */
-            max-width: 100%; /* Sørger for, at titlen fylder det nødvendige */
-            margin: 0 auto 10px; /* Sørger for korrekt margin og centrering */
-            word-wrap: break-word; /* Gør det muligt for lange ord at blive brudt på små skærme */
-        }ss
-    
-        /* Theme-toggle vises under titlen */
-        .theme-toggle {
-            display: block;
+            max-width: 100%;
             margin-bottom: 10px;
         }
     
-        /* Hamburger vises under theme-toggle */
+        /* Search container under titlen */
+        .search-container {
+            display: flex;
+            width: 100%;
+            justify-content: center; /* Centrerer søgefeltet */
+            margin-bottom: 10px;
+        }
+    
+        /* Theme-toggle og hamburgeren side om side */
+        .theme-toggle-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 10px;
+            margin-bottom: 10px;
+        }
+    
+        #theme-toggle {
+            width: 40px;
+            height: 40px;
+        }
+    
         .hamburger {
             display: block;
-            margin-bottom: 10px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
         }
     
-        /* Menuen åbnes under hamburgeren */
+        /* Menu åbnes under theme-toggle og hamburgeren */
         .menu {
             display: none; /* Skjult som standard */
-            flex-direction: column; /* Sørger for at menuen vises i en kolonne */
+            flex-direction: column;
+            background-color: #041A4B;
+            padding: 10px;
+            width: 100%;
             margin-top: 10px;
         }
     
         .hamburger.active + .menu {
-            display: flex; /* Viser menuen når hamburgeren er aktiv */
+            display: flex; /* Vises når hamburgeren er aktiv */
         }
     
-        /* Grid container ændres til en enkelt kolonne */
+        /* Grid-container under menuen */
         .grid-container {
             display: grid;
-            grid-template-columns: 1fr; /* Ændrer layoutet til en kolonne */
-            grid-gap: 10px; /* Afstand mellem elementerne */
-            justify-items: center; /* Centrerer elementerne */
+            grid-template-columns: 1fr; /* Enkelt kolonne */
+            gap: 10px;
+            width: 100%;
+            padding: 10px;
         }
     
         /* Skjuler .empty */
         .empty {
-            display: none;
-        }
-    
-        /* Fjern søge-containeren */
-        .search-container {
             display: none;
         }
     }
