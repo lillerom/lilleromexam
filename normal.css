@@ -116,59 +116,65 @@
     footer a:hover {
         color: #041A4B;
     }
+   
     @media (max-width: 600px) {
         .header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr; /* Ændrer layoutet til en enkelt kolonne */
+            grid-gap: 10px; /* Tilføjer lidt afstand mellem elementerne */
+            justify-items: center; /* Centrerer elementerne */
         }
     
-        .column-1,
-        .column-2,
-        .column-3 {
-            width: 100%;
-            margin: 0 auto;
-            text-align: center;
+        /* Viser logoet først */
+        .logo {
+            display: block;
+            margin-bottom: 10px;
         }
     
-        .nested-columns {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        /* Titel vises under logoet */
+        .title {
+            display: block;
+            margin-bottom: 10px;
         }
     
+        /* Theme-toggle vises under titlen */
+        .theme-toggle {
+            display: block;
+            margin-bottom: 10px;
+        }
+    
+        /* Hamburger vises under theme-toggle */
+        .hamburger {
+            display: block;
+            margin-bottom: 10px;
+        }
+    
+        /* Menuen åbnes under hamburgeren */
+        .menu {
+            display: none; /* Skjult som standard */
+            flex-direction: column; /* Sørger for at menuen vises i en kolonne */
+            margin-top: 10px;
+        }
+    
+        .hamburger.active + .menu {
+            display: flex; /* Viser menuen når hamburgeren er aktiv */
+        }
+    
+        /* Grid container ændres til en enkelt kolonne */
         .grid-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr; /* Ændrer layoutet til en kolonne */
+            grid-gap: 10px; /* Afstand mellem elementerne */
+            justify-items: center; /* Centrerer elementerne */
         }
     
+        /* Skjuler .empty */
         .empty {
             display: none;
         }
     
-        header .logo {
-            display: none;
-        }
-    
-        .hamburger {
-            display: block;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-    
+        /* Fjern søge-containeren */
         .search-container {
-            display: none;
-        }
-    
-        .search-container input,
-        .search-container button,
-        .search-container button:hover {
             display: none;
         }
     }
