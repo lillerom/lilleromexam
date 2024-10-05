@@ -13,14 +13,15 @@
     .menu {
         display: none; /* Skjult som standard */
         position: absolute;
-        top: 60px; /* Grundlæggende placering */
+        top: 100px; /* Grundlæggende placering */
         right: 0;
-        margin-top: 40px; /* Flytter menuen yderligere 40px ned */
         background-color: #041A4B;
         padding: 10px;
-        width: auto;
         min-width: 150px;
         z-index: 1000;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform: translateY(-10px);
+        opacity: 0;
     }
     
     .menu ul {
@@ -118,6 +119,21 @@
         color: #041A4B;
     }
     @media (max-width: 600px) {
+        .header {
+            grid-template-columns: 1fr; /* Ændrer layoutet til en enkelt kolonne */
+        }
+    
+        .column-1,
+        .column-2,
+        .column-3 {
+            grid-column: 1 / -1; /* Gør hver kolonne til at strække sig over hele bredden */
+            justify-self: center; /* Centrerer kolonnerne horisontalt */
+        }
+    
+        .nested-columns {
+            grid-template-columns: 1fr; /* Ændrer nested kolonner til en enkelt kolonne */
+        }
+        
         .grid-container {
             grid-template-columns: 1fr;
         }
@@ -148,17 +164,5 @@
             display: none;
             
         }
-        header h1 {
-            padding: 1px;
-            font-size: 1em; /* Justerer skriftstørrelsen til en stor størrelse for h1. */
-        }
-        .header {
-            display: grid;
-            grid-template-columns: 1fr; /* Definerer layoutet med tre kolonner i forholdene 1:3:1. */
-            padding: 1px; /* Padding er den indvendige afstand fra indholdet af elementet til elementets kant (altså, hvad der er inden i elementets rammer). */
-            align-items: center; /* Vertikalt centrerer elementerne i hver kolonne. */
-            justify-items: center; /* Horisontalt centrerer elementerne i hver kolonne. */
-            position: relative; /* Elementet placeres i forhold til dets normale position, og man kan flytte det med `top`, `left`, `right`, eller `bottom`. 
-                                Bruges ofte som referencepunkt for børn med `position: absolute`. */
-        }
+       
     }
