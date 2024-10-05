@@ -134,7 +134,11 @@
         /* Titel vises under logoet */
         .title {
             display: block;
+            font-size: 1.2rem; /* Mindre fontstørrelse til små skærme */
+            text-align: center; /* Centrerer titlen */
+            max-width: 90%; /* Sørger for, at titlen ikke fylder hele bredden */
             margin-bottom: 10px;
+            word-wrap: break-word; /* Gør det muligt for lange ord at blive brudt på små skærme */
         }
     
         /* Theme-toggle vises under titlen */
