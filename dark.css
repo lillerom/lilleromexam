@@ -242,7 +242,7 @@
             justify-items: center; /* Horisontalt centrerer elementerne i hver kolonne. */
             /* position: relative; Elementet placeres i forhold til dets normale position, og man kan flytte det med `top`, `left`, `right`, eller `bottom`. Bruges ofte som referencepunkt for børn med `position: absolute`. */
             height: fit-content;
-            padding: 40px;
+            margin: 40px;
         }
         
         .title {
