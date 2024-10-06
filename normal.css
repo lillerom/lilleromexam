@@ -249,7 +249,7 @@
             position: relative; /* Elementet placeres i forhold til dets normale position, og man kan flytte det med `top`, `left`, `right`, eller `bottom`. Bruges ofte som referencepunkt for børn med `position: absolute`. */
             height: fit-content;
             gap: none;
-            padding: 25px;
+            padding: 30px;
         }
         
     
