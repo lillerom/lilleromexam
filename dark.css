@@ -37,8 +37,9 @@
     }
     
     .title {
-        margin-right: 10px;
+        
         font-size: 1.5em;
+      
         
     }
     
@@ -110,7 +111,8 @@
         color: #333; /* Skriftfarve i inputfeltet. */
         flex: 1; /* Gør inputfeltet fleksibelt */
         margin-right: 10px; /* Tilføjer 10px margin til højre */
-        width: 130px;
+        margin-left: 10px; 
+        max-width: 80%;
        
     }
 
@@ -132,9 +134,9 @@
     .menu {
         display: none;
         position: absolute;
-        top: 60px;
+        top: 150px;
         right: 0;
-        margin-top: 40px; /* Flytter menuen yderligere 40px ned */
+        margin-top: 100px; /* Flytter menuen yderligere 40px ned */
         background-color: #B2DFD3;
         padding: 10px;
         width: auto;
@@ -230,40 +232,31 @@
     footer a:hover {
         color: #64C295;
     }
-    @media (max-width: 600px) {
+     /* Layout for mindre skærme */
+     @media (max-width: 600px) {
+        .header {
+            display: grid;
+            grid-template-columns: 1fr; /* Definerer layoutet med 1 kolonne på små skærme*/
+            align-items: center; /* Vertikalt centrerer elementerne i hver kolonne. */
+            justify-items: center; /* Horisontalt centrerer elementerne i hver kolonne. */
+            /* position: relative; Elementet placeres i forhold til dets normale position, og man kan flytte det med `top`, `left`, `right`, eller `bottom`. Bruges ofte som referencepunkt for børn med `position: absolute`. */
+            height: fit-content;
+            padding: 40px;
+        }
+        
+        .title {
+            display: none; 
+        }
+       
+        /* Resten af indholdet i en kolonne */
         .grid-container {
+            display: grid;
             grid-template-columns: 1fr;
+            gap: 10px;
+            padding: 10px;
         }
+    
         .empty {
-            display: none;
+            display: none; /* Skjuler .empty klassen */
         }
-        header .logo {
-            display: none;
-        }
-        .hamburger {
-            display: block; /* Viser hamburgermenuen på små skærme */
-            top: 10px; /* Placerer hamburgermenuen i øverste højre hjørne */
-            right: 10px;
-        }
-        .search-container {
-            display: none;
-
-        }
-        .search-container input {
-            display: none;
-            
-           
-        }
-
-        .search-container button {
-            display: none;
-            
-        }
-
-        .search-container button:hover {
-            display: none;
-            
-        }
-
     }
-
