@@ -112,7 +112,7 @@
         flex: 1; /* Gør inputfeltet fleksibelt */
         margin-right: 10px; /* Tilføjer 10px margin til højre */
         margin-left: 10px; 
-        max-width: 80%;
+        max-width: 120px;
        
        
     }
