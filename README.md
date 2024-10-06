@@ -1,4 +1,4 @@
-Eksamensprojekt i Webudvikling hos KEA af Linda Lillelund Rom, oktober 2024
+Eksamensprojekt i Webudvikling hos CPHbusiness af Linda Lillelund Rom, oktober 2024
 
 Projektet er en hjemmeside for Eventudvalget hos Hillerød Tekniske Gymnasium.
 
