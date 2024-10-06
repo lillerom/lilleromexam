@@ -242,7 +242,7 @@
    
     
     /* Layout for mindre skærme */
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
         .header {
             display: grid;
             grid-template-columns: 1fr; /* Definerer layoutet med 1 kolonne på små skærme*/
