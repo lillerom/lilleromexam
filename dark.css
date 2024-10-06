@@ -97,7 +97,7 @@
         border-radius: 25px; /* Runde hjørner på søgecontaineren. */
         padding: 5px; /* Indvendig afstand mellem containerens kant og dens indhold. Det er her, du kan justere pladsen inde i containeren. */
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tilføjer en svag skygge for dybdeeffekt. */
-        max-width: 100%;
+      
        
         
     }
@@ -112,7 +112,7 @@
         flex: 1; /* Gør inputfeltet fleksibelt */
         margin-right: 10px; /* Tilføjer 10px margin til højre */
         margin-left: 10px; 
-        max-width: 80%;
+       
        
     }
 
