@@ -19,7 +19,6 @@
         gap: 10px;
     }
 
-    .column-1 img,
     .logo {
         display: flex; /* Gør containeren fleksibel */
         max-width: 100%; /* Sørger for, at billedet ikke overstiger forælderens bredde */
@@ -30,26 +29,13 @@
     }
 
 
-    .column-2 {
-        display:flex;
-        align-items: center; /* Centrerer indholdet lodret */
-        justify-content: center; /* Centrerer indholdet vandret */
-    }
-    
     .title {
         
         font-size: 1.5em;
-      
         
     }
     
-    .column-3 {
-        display: flex;
-        max-width: 100%;
-        align-items: center; /* Centrerer indholdet lodret */
-        justify-content: center; /* Centrerer indholdet vandret */
-    }
-
+    
     .nested-columns {
         display: grid;
         grid-template-columns: 1fr 3fr 1fr; /* Definerer tre kolonner inde i kolonne 3 med størrelsesforholdene 1:3:1*/
@@ -57,26 +43,7 @@
         max-width: 100%; /* Sørger for, at de nested kolonner ikke overskrider deres forælder containers bredde. */
     }
 
-    .nested-column {
-        max-width: 100%; /* Forhindrer hver nested kolonne i at blive bredere end deres container. */
-    }
-
-    .container {
-        display: flex;
-        align-items: center;
-    }
-    
-    .image {
-        display: flex;
-        align-items: center; /* Centrerer indholdet lodret */
-        justify-content: center; /* Centrerer indholdet vandret */
-    }
-
-
-    #theme-toggle:hover ~ p {
-        opacity: 1; /* Gør teksten synlig ved hover på #theme-toggle. For at få teksten i <p>-elementet til at blive synlig, når du hover over #theme-toggle, kan du bruge en kombination af CSS og en pseudo-klasse. Du kan bruge :hover på #theme-toggle og derefter vælge søskende-elementet <p> ved hjælp af den generelle søskende-kombinator (~). */
-    }
-
+   
     #theme-toggle {
         width: auto; /* Bredde justeres automatisk baseret på billedets størrelse. */
         height: 40px; /* Fast højde på tema-knappen. */
@@ -160,7 +127,7 @@
         cursor: pointer;
         padding: 5px; /* Indvendig polstring omkring hamburgeren */
         position: relative; /* Sikrer, at menuen åbner korrekt i forhold til hamburgeren */
-        background-color: #041A4B;/* Baggrundsfarve for hamburgeren */
+       /* background-color: #041A4B; Baggrundsfarve for hamburgeren */
         z-index: 1001; /* Sørg for, at hamburgeren vises ovenfor menuen */
         
     }
@@ -191,8 +158,8 @@
     }
 
     .grid-item {
-        background-color: #041A4B;
-        color: #B2DFD3;
+        /*background-color: #041A4B;*/
+        /*color: #B2DFD3;*/
         padding: 10px;
         text-align: center;
         border-radius: 10px;
@@ -205,8 +172,8 @@
     .grid-item img {
         max-width: 100%;
         height: auto;
-        border: 6px solid #B2DFD3;
-        border-radius: 80px;
+        border: 7px solid #B2DFD3;
+        border-radius: 70px;
         transition: transform 0.3s ease, border-color 0.3s ease;
     }
     .grid-item img:hover {
