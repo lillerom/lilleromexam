@@ -1,12 +1,13 @@
 
     body {
-        background-color: #041A4B;
+        background-color: #1A1C2B;
         color: #B2DFD3;
         font-family: Arial, sans-serif;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
         margin: 0;
+        overflow-x: hidden; /* Forhindrer horisontal scrolling */
     }
     
     .header {
@@ -86,7 +87,7 @@
 
     .search-container button {
         border: none; /* Ingen kantlinje for knappen. */
-        background-color: #041A4B; /* Mørkeblå baggrundsfarve. */
+        background-color: #1A1C2B; /* Mørkeblå baggrundsfarve. */
         color: white; /* Hvid tekstfarve for knappen. */
         padding: 5px 15px; /* Indvendig plads i knappen, som skaber plads mellem tekst og kant. */
         border-radius: 20px; /* Runde hjørner på knappen. */
@@ -102,7 +103,7 @@
     .menu {
         display: none;
         position: absolute;
-        top: 150px;
+        top: 10px;
         right: 0;
         margin-top: 100px; /* Flytter menuen yderligere 40px ned */
         background-color: #B2DFD3;
@@ -120,7 +121,7 @@
         margin: 10px 0;
     }
     .menu a {
-        color:#041A4B;
+        color:#1A1C2B;
         text-decoration: none;
     }
     .hamburger {
@@ -182,7 +183,7 @@
     }
 
     footer {
-        background-color: #041A4B;
+        background-color: #1A1C2B;
         color: #B2DFD3;
         text-align: center;
         padding: 10px;
@@ -226,5 +227,8 @@
     
         .empty {
             display: none; /* Skjuler .empty klassen */
+        }
+        .menu {
+            top: 110px;
         }
     }
