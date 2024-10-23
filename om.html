@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html lang="da">
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventudvalget webudvikling eksamensprojekt</title>
     <link id="theme-style" rel="stylesheet" href="normal.css">
     <link rel="icon" href="images/eventuikon.png" type="image/x-icon">
     <style>
-              
+       main {
+        padding: 2em; /* Tilføjer padding omkring hovedindholdet */
+        display: grid; /* Bruger grid layout til hovedindholdet */
+        grid-template-columns: 1fr 1fr; /* To lige store kolonner */
+        gap: 20px; /* Juster afstanden mellem spalterne efter behov */
+        }
+
+        .spalte {
+        background-color: transparent; /* Sætter baggrundsfarven til lysere blå */
+        padding: 2em; /* Tilføjer indvendig afstand til hver apartment */
+        }
+
+        /* Media query for små skærme */
+        @media (max-width: 600px) {
+            main {
+                grid-template-columns: 1fr; /* Skifter til én kolonne */
+            }
+        }
     </style>
-    </head>
-        
+   
+   
+    </style>
+</head>
 <body>
     <header class="header">
         <!-- Første kolonne: Logo -->
@@ -23,7 +42,7 @@
         <!-- Anden kolonne: Titel -->
         <div class="column column-2">
             <div class="title">
-                <h1>Robotklubben</h1>
+                <h1>Eventudvalget HTX Hillerød</h1>
             </div>
         </div>
         
@@ -69,21 +88,56 @@
         </div> <!-- Slut på tredje kolonne -->
         
     </header>
-    
-    
-    
-   
-    <main style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
-        <h1>Velkommen til Eventudvalget HTX Hillerød</h1>
-        <p>Siden er under opbygning. Der er arbejdet mest på stylen på undersiden med klubber, som du finder via menuen.</p>
+
+    <main>
+        <div class="spalte">
+            <h2>Om Eventudvalget HTX Hillerød</h2>
+            <p>Eventudvalget er en frivillig forening for elever på U/NORD Hillerød Tekniske Gymnasium, Carlsbergvej 34, 3400 Hillerød hvis formål det er at skabe events for eleverne på skolen. </p>
+            <br>
+            <p>Hvert år vælges bestyrelsen på en generalforsamling. Formanden Linda Lillelund Rom er lærer på skolen, næstformanden Ida Volquardsen er elev på skolen.  </p>
+            <br>
+            <h2>Vejret lige nu i Hillerød</h2>
+            <div id="weather-data"></div>
+            
+            
+        </div>
+        <div class="spalte">
+            <h2>Kort over Hillerød</h2>
+            <div id="map-container" style="width: 100%; height: 400px;">
+                <iframe
+                    width="100%"
+                    height="100%"
+                    frameborder="0" style="border:0"
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBIp_3d-q4ZBbJpis6601CMYhbIKW155jk&q=Hillerod,Danmark" allowfullscreen>
+                </iframe>
+            </div>
+           
+        </div>
     </main>
+    
 
     <footer>
         <p>Skriv til eventudvalgets formand Linda Rom på <a href="mailto:LIRO@unord.dk">LIRO@unord.dk</a></p>
     </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('https://api.open-meteo.com/v1/forecast?latitude=55.9279&longitude=12.3008&current=temperature_2m,wind_speed_10m,precipitation&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m')
+            .then(response => response.json())
+            .then(data => {
+                const weatherDataDiv = document.getElementById('weather-data');
+                const current = data.current;
+                const hourly = data.hourly;
     
- 
-    <script src="script.js"></script> 
+                weatherDataDiv.innerHTML = `
+                    <h2></h2>
+                    <p>Temperatur: ${current.temperature_2m}°C</p>
+                    <p>Vindhastighed: ${current.wind_speed_10m} m/s</p>
+                    <p>Nedbør: ${current.precipitation} mm</p>      
+                `;
+            })
+            .catch(error => console.error('Error fetching weather data:', error));
+    });
+    </script>
+    <script src="script.js"></script>
 </body>
-
 </html>
