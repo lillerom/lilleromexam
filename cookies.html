@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Accept</title>
+    <style>
+        .cookie-banner {
+            position: fixed;
+            bottom: -100px; /* Start position off-screen */
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+            transition: bottom 0.5s ease-in-out; /* Animation for sliding */
+        }
+        .cookie-banner.show {
+            bottom: 0; /* End position on-screen */
+        }
+        .cookie-banner button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .cookie-banner button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="cookie-banner" id="cookieBanner">
+        Denne hjemmeside bruger cookies for at forbedre din oplevelse. 
+        <button onclick="acceptCookies()">Accepter</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('cookieBanner').classList.add('show');
+        });
+
+        function acceptCookies() {
+            document.getElementById('cookieBanner').classList.remove('show');
+            setTimeout(function() {
+                document.getElementById('cookieBanner').style.display = 'none';
+            }, 500); // Match the transition duration
+            // Her kan du tilføje yderligere logik til at håndtere cookie accept
+        }
+    </script>
+</body>
+</html>

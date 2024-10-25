@@ -1,5 +1,43 @@
 // script.js
 
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=55.9279&longitude=12.3008&current=temperature_2m,wind_speed_10m,precipitation&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m')
+        .then(response => response.json())
+        .then(data => {
+            const weatherDataDiv = document.getElementById('weather-data');
+            const current = data.current;
+            const hourly = data.hourly;
+
+            weatherDataDiv.innerHTML = `
+                <h2></h2>
+                <p>Test: ${current.temperature_2m}°C</p>
+                <p>Vindhastighed: ${current.wind_speed_10m} m/s</p>
+                <p>Nedbør: ${current.precipitation} mm</p>      
+            `;
+        })
+        .catch(error => console.error('Error fetching weather data:', error));
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('cookieBanner').classList.add('show');
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const cookieAccepted = localStorage.getItem('cookieAccepted');
+    if (!cookieAccepted) {
+        document.getElementById('cookieBanner').classList.add('show');
+    }
+});
+
+function acceptCookies() {
+    document.getElementById('cookieBanner').classList.remove('show');
+    setTimeout(function() {
+        document.getElementById('cookieBanner').style.display = 'none';
+    }, 500); // Match the transition duration
+    localStorage.setItem('cookieAccepted', 'true'); // Gem accept i LocalStorage
+}
+
+
 // Når siden indlæses, tjekker vi om brugeren allerede har valgt et tema
 window.onload = function() {
     const savedTheme = localStorage.getItem('theme'); // Tjek gemt tema i LocalStorage
@@ -88,27 +126,4 @@ function showSlides(n) {
     }
     slides[slideIndex-1].style.display = "block";
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('https://api.open-meteo.com/v1/forecast?latitude=55.6759&longitude=12.5655&current=temperature_2m,wind_speed_10m,precipitation&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m')
-        .then(response => response.json())
-        .then(data => {
-            const weatherDataDiv = document.getElementById('weather-data');
-            const current = data.current;
-            const hourly = data.hourly;
-
-            weatherDataDiv.innerHTML = `
-                <h2>Vejret lige nu</h2>
-                <p>Temperature: ${current.temperature_2m}°C</p>
-                <p>Wind Speed: ${current.wind_speed_10m} m/s</p>
-                <p>Rain: ${current.precipitation} mm</p>  
-                   
-            `;
-        })
-        .catch(error => console.error('Error fetching weather data:', error));
-});
-
-
-
-
 
