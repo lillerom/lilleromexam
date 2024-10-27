@@ -8,8 +8,6 @@
     <link rel="icon" href="images/eventuikon.png" type="image/x-icon">
     <style>
         /* Din CSS her */
-       
-
     </style>
 </head>
 <body>
@@ -44,8 +42,10 @@
                 <!-- Anden nested kolonne: Søgefelt -->
                 <div class="nested-column nested-column-2">
                     <div class="search-container">
-                        <input type="text" id="search" placeholder="Søg på siden...">
-                        <button onclick="searchSite()">Søg</button>
+                        <form onsubmit="return searchSite()">
+                            <input type="text" id="search" placeholder="Søg på siden...">
+                            <button type="submit">Søg</button>
+                        </form>
                     </div>
                 </div>
                 
@@ -73,7 +73,6 @@
             </div> <!-- Slut på nested kolonner -->
         </div> <!-- Slut på tredje kolonne -->
     </header>
-    
     
     <h1>Søgeresultater</h1>
     <div id="results"></div>
@@ -116,8 +115,5 @@
             displayResults(query);
         }
     </script>
-
-
-    <script src="script.js"></script>
 </body>
 </html>
