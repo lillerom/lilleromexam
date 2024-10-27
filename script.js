@@ -156,7 +156,6 @@ function showSlides(n) {
     slides[slideIndex-1].style.display = "block";
 }
 
-
 fetch('searchData.json')
             .then(response => response.json())
             .then(data => {
@@ -168,28 +167,28 @@ fetch('searchData.json')
             })
             .catch(error => console.error('Error loading JSON:', error));
 
-        // Funktion til at søge i dataene
-        function search(query, data) {
-            return data.filter(item => item.title.includes(query) || item.description.includes(query));
-        }
+// Funktion til at søge i dataene
+function search(query, data) {
+    return data.filter(item => item.title.includes(query) || item.description.includes(query));
+}
 
-        // Funktion til at vise resultaterne
-        function displayResults(results) {
-            const resultsDiv = document.getElementById('resultsDiv');
-            if (results && results.length > 0) {
-                results.forEach(result => {
-                    const link = document.createElement('a');
-                    link.href = result.url;
-                    link.target = '_blank';
-                    link.textContent = result.title;
+// Funktion til at vise resultaterne
+function displayResults(results) {
+    const resultsDiv = document.getElementById('resultsDiv');
+    if (results && results.length > 0) {
+        results.forEach(result => {
+            const link = document.createElement('a');
+            link.href = result.url;
+            link.target = '_blank';
+            link.textContent = result.title;
 
-                    const description = document.createElement('p');
-                    description.textContent = result.description;
+            const description = document.createElement('p');
+            description.textContent = result.description;
 
-                    resultsDiv.appendChild(link);
-                    resultsDiv.appendChild(description);
-                });
-            } else {
-                resultsDiv.textContent = 'Ingen resultater fundet.';
-            }
-        }
+            resultsDiv.appendChild(link);
+            resultsDiv.appendChild(description);
+        });
+    } else {
+        resultsDiv.textContent = 'Ingen resultater fundet.';
+    }
+}
