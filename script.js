@@ -157,25 +157,22 @@ function showSlides(n) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('search');
     const resultsDiv = document.getElementById('resultsDiv');
+    const query = localStorage.getItem('searchQuery');
 
-    window.searchSite = function() {
-        const query = searchInput.value.trim();
-        if (query) {
-            fetch('searchData.json')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Data loaded:', data); // Debugging
-                    const results = search(query, data);
-                    console.log('Search results:', results); // Debugging
-                    displayResults(results);
-                })
-                .catch(error => console.error('Error loading JSON:', error));
-        } else {
-            resultsDiv.textContent = 'Indtast venligst et søgeord.';
-        }
-    };
+    if (query) {
+        fetch('searchData.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Data loaded:', data); // Debugging
+                const results = search(query, data);
+                console.log('Search results:', results); // Debugging
+                displayResults(results);
+            })
+            .catch(error => console.error('Error loading JSON:', error));
+    } else {
+        resultsDiv.textContent = 'Ingen søgeforespørgsel fundet.';
+    }
 
     // Funktion til at søge i dataene
     function search(query, data) {
