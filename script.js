@@ -156,39 +156,50 @@ function showSlides(n) {
     slides[slideIndex-1].style.display = "block";
 }
 
-fetch('searchData.json')
-            .then(response => response.json())
-            .then(data => {
-                console.log('Data loaded:', data); // Debugging
-                const query = 'klub'; // Erstat med din søgeterm
-                const results = search(query, data);
-                console.log('Search results:', results); // Debugging
-                displayResults(results);
-            })
-            .catch(error => console.error('Error loading JSON:', error));
-
-// Funktion til at søge i dataene
-function search(query, data) {
-    return data.filter(item => item.title.includes(query) || item.description.includes(query));
-}
-
-// Funktion til at vise resultaterne
-function displayResults(results) {
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search');
     const resultsDiv = document.getElementById('resultsDiv');
-    if (results && results.length > 0) {
-        results.forEach(result => {
-            const link = document.createElement('a');
-            link.href = result.url;
-            link.target = '_blank';
-            link.textContent = result.title;
 
-            const description = document.createElement('p');
-            description.textContent = result.description;
+    window.searchSite = function() {
+        const query = searchInput.value.trim();
+        if (query) {
+            fetch('searchData.json')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data loaded:', data); // Debugging
+                    const results = search(query, data);
+                    console.log('Search results:', results); // Debugging
+                    displayResults(results);
+                })
+                .catch(error => console.error('Error loading JSON:', error));
+        } else {
+            resultsDiv.textContent = 'Indtast venligst et søgeord.';
+        }
+    };
 
-            resultsDiv.appendChild(link);
-            resultsDiv.appendChild(description);
-        });
-    } else {
-        resultsDiv.textContent = 'Ingen resultater fundet.';
+    // Funktion til at søge i dataene
+    function search(query, data) {
+        return data.filter(item => item.title.includes(query) || item.description.includes(query));
     }
-}
+
+    // Funktion til at vise resultaterne
+    function displayResults(results) {
+        resultsDiv.innerHTML = ''; // Ryd tidligere resultater
+        if (results && results.length > 0) {
+            results.forEach(result => {
+                const link = document.createElement('a');
+                link.href = result.url;
+                link.target = '_blank';
+                link.textContent = result.title;
+
+                const description = document.createElement('p');
+                description.textContent = result.description;
+
+                resultsDiv.appendChild(link);
+                resultsDiv.appendChild(description);
+            });
+        } else {
+            resultsDiv.textContent = 'Ingen resultater fundet.';
+        }
+    }
+});
