@@ -158,9 +158,24 @@ function showSlides(n) {
 const results = JSON.parse(localStorage.getItem('searchResults'));
 const resultsDiv = document.getElementById('results');
 
-// Tjek om der er resultater
+fetch('searchData.json')
+.then(response => response.json())
+.then(data => {
+    const query = 'din søgeterm'; // Erstat med din søgeterm
+    const results = search(query, data);
+    displayResults(results);
+})
+.catch(error => console.error('Error loading JSON:', error));
+
+// Funktion til at søge i dataene
+function search(query, data) {
+return data.filter(item => item.title.includes(query) || item.description.includes(query));
+}
+
+// Funktion til at vise resultaterne
+function displayResults(results) {
+const resultsDiv = document.getElementById('resultsDiv');
 if (results && results.length > 0) {
-    console.log("Resultater fundet:", results);
     results.forEach(result => {
         const link = document.createElement('a');
         link.href = result.url;
@@ -174,6 +189,6 @@ if (results && results.length > 0) {
         resultsDiv.appendChild(description);
     });
 } else {
-    console.log("Ingen resultater fundet.");
     resultsDiv.textContent = 'Ingen resultater fundet.';
+}
 }
