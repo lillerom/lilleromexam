@@ -143,8 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.searchSite = function() {
         const query = searchInput.value.trim();
+        console.log('Search query:', query); // Debugging
         if (query) {
             localStorage.setItem('searchQuery', query);
+            console.log('Redirecting to searchResults.html'); // Debugging
             window.location.href = 'searchResults.html';
         } else {
             alert('Indtast venligst et søgeord.');
@@ -155,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname.endsWith('searchResults.html')) {
         const resultsDiv = document.getElementById('resultsDiv');
         const query = localStorage.getItem('searchQuery');
-        console.log('Search query:', query); // Debugging
+        console.log('Search query from localStorage:', query); // Debugging
 
         if (query) {
             fetch('searchData.json')

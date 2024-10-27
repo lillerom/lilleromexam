@@ -8,6 +8,14 @@
     <link rel="icon" href="images/eventuikon.png" type="image/x-icon">
     <style>
         /* Din CSS her */
+        #resultsDiv {
+            position: relative; /* Sørger for, at z-index virker */
+            z-index: 1000; /* Højere værdi for at sikre, at det vises forrest */
+            background-color: white; /* Valgfrit: Tilføj en baggrundsfarve for bedre synlighed */
+            padding: 10px; /* Valgfrit: Tilføj lidt padding for bedre udseende */
+            border: 1px solid #ccc; /* Valgfrit: Tilføj en kant for bedre synlighed */
+        }
+
         #resultsDiv ul {
             list-style-type: none;
             padding: 0;
@@ -25,6 +33,7 @@
         #resultsDiv a:hover {
             text-decoration: underline;
         }
+
 
     </style>
 </head>
@@ -92,7 +101,7 @@
     
     <h1>Søgeresultater</h1>
     <div id="resultsDiv"></div>
-
+   
     <script src="script.js"></script>
 </body>
 </html>
