@@ -158,37 +158,41 @@ function showSlides(n) {
 const results = JSON.parse(localStorage.getItem('searchResults'));
 const resultsDiv = document.getElementById('results');
 
+
+// Funktion til at hente og parse JSON-filen
 fetch('searchData.json')
-.then(response => response.json())
-.then(data => {
-    const query = 'din søgeterm'; // Erstat med din søgeterm
-    const results = search(query, data);
-    displayResults(results);
-})
-.catch(error => console.error('Error loading JSON:', error));
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data loaded:', data); // Debugging
+        const query = 'din søgeterm'; // Erstat med din søgeterm
+        const results = search(query, data);
+        console.log('Search results:', results); // Debugging
+        displayResults(results);
+    })
+    .catch(error => console.error('Error loading JSON:', error));
 
 // Funktion til at søge i dataene
 function search(query, data) {
-return data.filter(item => item.title.includes(query) || item.description.includes(query));
+    return data.filter(item => item.title.includes(query) || item.description.includes(query));
 }
 
 // Funktion til at vise resultaterne
 function displayResults(results) {
-const resultsDiv = document.getElementById('resultsDiv');
-if (results && results.length > 0) {
-    results.forEach(result => {
-        const link = document.createElement('a');
-        link.href = result.url;
-        link.target = '_blank';
-        link.textContent = result.title;
+    const resultsDiv = document.getElementById('resultsDiv');
+    if (results && results.length > 0) {
+        results.forEach(result => {
+            const link = document.createElement('a');
+            link.href = result.url;
+            link.target = '_blank';
+            link.textContent = result.title;
 
-        const description = document.createElement('p');
-        description.textContent = result.description;
+            const description = document.createElement('p');
+            description.textContent = result.description;
 
-        resultsDiv.appendChild(link);
-        resultsDiv.appendChild(description);
-    });
-} else {
-    resultsDiv.textContent = 'Ingen resultater fundet.';
-}
+            resultsDiv.appendChild(link);
+            resultsDiv.appendChild(description);
+        });
+    } else {
+        resultsDiv.textContent = 'Ingen resultater fundet.';
+    }
 }
