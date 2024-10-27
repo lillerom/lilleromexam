@@ -1,26 +1,5 @@
 // script.js
 // Hent resultater fra LocalStorage
-const results = JSON.parse(localStorage.getItem('searchResults'));
-const resultsDiv = document.getElementById('results');
-
-// Tjek om der er resultater
-if (results && results.length > 0) {
-    results.forEach(result => {
-        const link = document.createElement('a');
-        link.href = result.url;
-        link.target = '_blank';
-        link.textContent = result.title;
-
-        const description = document.createElement('p');
-        description.textContent = result.description;
-
-        resultsDiv.appendChild(link);
-        resultsDiv.appendChild(description);
-    });
-} else {
-    resultsDiv.textContent = 'Ingen resultater fundet.';
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     fetch('https://api.open-meteo.com/v1/forecast?latitude=55.9279&longitude=12.3008&current=temperature_2m,wind_speed_10m,precipitation&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m')
         .then(response => response.json())
@@ -176,4 +155,23 @@ function showSlides(n) {
     }
     slides[slideIndex-1].style.display = "block";
 }
+const results = JSON.parse(localStorage.getItem('searchResults'));
+const resultsDiv = document.getElementById('results');
 
+// Tjek om der er resultater
+if (results && results.length > 0) {
+    results.forEach(result => {
+        const link = document.createElement('a');
+        link.href = result.url;
+        link.target = '_blank';
+        link.textContent = result.title;
+
+        const description = document.createElement('p');
+        description.textContent = result.description;
+
+        resultsDiv.appendChild(link);
+        resultsDiv.appendChild(description);
+    });
+} else {
+    resultsDiv.textContent = 'Ingen resultater fundet.';
+}
