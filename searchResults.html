@@ -7,7 +7,44 @@
     <link id="theme-style" rel="stylesheet" href="normal.css">
     <link rel="icon" href="images/eventuikon.png" type="image/x-icon">
     <style>
-        /* Din CSS her */
+       
+    /* CSS til Søgeresultater container */
+    #results {
+        width: 80%;
+        max-width: 600px;
+        margin-top: 20px;
+        
+    }
+
+    #results a {
+        display: block;
+        text-decoration: none;
+        color: #0066cc;
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+        
+    }
+
+    #results a:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transform: scale(1.02);
+    }
+
+    /* Ingen resultater */
+    #results div {
+        text-align: center;
+        padding: 15px;
+        background-color: #f2f2f2;
+        border-radius: 8px;
+        color: #666;
+        font-size: 18px;
+        margin-top: 10px;
+        border: 1px solid #ddd;
+    }
     </style>
 </head>
 <body>
@@ -115,5 +152,6 @@
             displayResults(query);
         }
     </script>
+    <script src="script.js"></script>
 </body>
 </html>

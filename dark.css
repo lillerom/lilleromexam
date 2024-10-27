@@ -12,7 +12,7 @@
     
     .header {
         display: grid;
-        grid-template-columns: 1fr 3fr 1fr; /* Definerer layoutet med tre kolonner i forholdene 1:3:1. */
+        grid-template-columns: 1fr 2fr 1fr; /* Definerer layoutet med tre kolonner i forholdene 1:3:1. */
         align-items: center; /* Vertikalt centrerer elementerne i hver kolonne. */
         justify-items: center; /* Horisontalt centrerer elementerne i hver kolonne. */
         position: relative; /* Elementet placeres i forhold til dets normale position, og man kan flytte det med `top`, `left`, `right`, eller `bottom`. Bruges ofte som referencepunkt for børn med `position: absolute`. */
@@ -63,10 +63,10 @@
         justify-content: center; /* Horisontal centring af hele søgecontaineren. */
         background-color: #f1f1f1; /* Lysegrå baggrund for søgecontaineren. */
         border-radius: 25px; /* Runde hjørner på søgecontaineren. */
-        padding: 5px; /* Indvendig afstand mellem containerens kant og dens indhold. Det er her, du kan justere pladsen inde i containeren. */
+        
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tilføjer en svag skygge for dybdeeffekt. */
-      
-       
+        padding: 2px; /* Fjern ekstra padding, der kan forårsage højdeforskel */
+        height: 40px; /* Fast højde for at sikre konsistens */
         
     }
 
@@ -74,27 +74,33 @@
         border: none; /* Ingen kantlinje omkring inputfeltet. */
         outline: none; /* Fjerner den standard omrids, der normalt vises, når inputfeltet er i fokus. */
         background: none; /* Ingen baggrund for inputfeltet. */
-        padding: 5px; /* Indvendig plads i inputfeltet. */
+        
         font-size: 1em; /* Skriftstørrelse i inputfeltet. */
         color: #333; /* Skriftfarve i inputfeltet. */
         flex: 1; /* Gør inputfeltet fleksibelt */
-        margin-right: 10px; /* Tilføjer 10px margin til højre */
-        margin-left: 10px; 
-        max-width: 120px;
-       
-       
-    }
+        
+        max-width: 130px;
+        height: 100%; /* Sørg for, at inputfeltet fylder hele højden af .search-container */
+        padding: 0 10px; /* Juster padding, så inputfeltet ikke øger højden */
+        margin: 0; /* Fjern ekstra marginer */
+}
+        
+    
 
     .search-container button {
         border: none; /* Ingen kantlinje for knappen. */
-        background-color: #1A1C2B; /* Mørkeblå baggrundsfarve. */
+        background-color: #041A4B; /* Mørkeblå baggrundsfarve. */
         color: white; /* Hvid tekstfarve for knappen. */
         padding: 5px 15px; /* Indvendig plads i knappen, som skaber plads mellem tekst og kant. */
         border-radius: 20px; /* Runde hjørner på knappen. */
         cursor: pointer; /* Skifter markøren til en pointer ved hover, hvilket viser, at det er klikbart. */
         transition: background-color 0.3s ease; /* Gør farveskift ved hover glidende. */
+        height: 100%; /* Sørg for, at knappen fylder hele højden af .search-container */
+        margin-right: 2px;
+            
         
     }
+
 
     .search-container button:hover {
         background-color: #0183BF; /* Lysere blå baggrund ved hover. */

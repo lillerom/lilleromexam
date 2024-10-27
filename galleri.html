@@ -83,9 +83,11 @@
                 <!-- Anden nested kolonne: Søgefelt -->
                 <div class="nested-column nested-column-2">
                     <div class="search-container">
-                        <input type="text" id="search" placeholder="Søg på siden...">
-                        <button onclick="searchSite()">Søg</button>
-                    </div>  
+                        <form onsubmit="return searchSite()">
+                            <input type="text" id="search" placeholder="Søg på siden...">
+                            <button type="submit">Søg</button>
+                        </form>
+                    </div>
                 </div>
                 
                 <!-- Tredje nested kolonne: Hamburger-menu -->
