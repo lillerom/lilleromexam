@@ -118,23 +118,25 @@ function toggleMenu() {
 }
 
 
-function searchSite() {
-    const query = document.getElementById('search').value;
-    if (query) {
-        window.find(query);
-    }
+async function searchSite() {
+    const query = document.getElementById('search').value.toLowerCase();
+    if (!query) return;
+
+    // Hent JSON-filen med søgedata
+    const response = await fetch('https://lillerom.github.io/lilleromexam/searchData.json');
+    const data = await response.json();
+
+    // Filtrer resultater, der matcher søgeordet
+    const results = data.filter(page => 
+        page.title.toLowerCase().includes(query) || 
+        page.description.toLowerCase().includes(query)
+    );
+
+    // Gem resultaterne i LocalStorage, og åbn en ny side for at vise dem
+    localStorage.setItem('searchResults', JSON.stringify(results));
+    window.open('searchResults.html', '_blank');
 }
 
-
-function searchSite() {
-    const query = document.getElementById('search').value;
-    if (query) {
-        // Brug en mere robust søgefunktion
-        if (!window.find(query)) {
-            alert('Søgeordet blev ikke fundet.');
-        }
-    }
-}
 
 let slideIndex = 1;
 showSlides(slideIndex);
