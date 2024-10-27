@@ -176,22 +176,22 @@ document.addEventListener('DOMContentLoaded', () => {
             return data.filter(item => item.title.includes(query) || item.description.includes(query));
         }
 
-        // Funktion til at vise resultaterne
+        // Funktion til at vise resultaterne som en liste med links
         function displayResults(results) {
             resultsDiv.innerHTML = ''; // Ryd tidligere resultater
             if (results && results.length > 0) {
+                const ul = document.createElement('ul');
                 results.forEach(result => {
+                    const li = document.createElement('li');
                     const link = document.createElement('a');
                     link.href = result.url;
                     link.target = '_blank';
                     link.textContent = result.title;
 
-                    const description = document.createElement('p');
-                    description.textContent = result.description;
-
-                    resultsDiv.appendChild(link);
-                    resultsDiv.appendChild(description);
+                    li.appendChild(link);
+                    ul.appendChild(li);
                 });
+                resultsDiv.appendChild(ul);
             } else {
                 resultsDiv.textContent = 'Ingen resultater fundet.';
             }
