@@ -8,32 +8,7 @@
     <link rel="icon" href="images/eventuikon.png" type="image/x-icon">
     <style>
         /* Din CSS her */
-        #resultsDiv {
-            position: relative; /* Sørger for, at z-index virker */
-            z-index: 1000; /* Højere værdi for at sikre, at det vises forrest */
-            background-color: white; /* Valgfrit: Tilføj en baggrundsfarve for bedre synlighed */
-            padding: 10px; /* Valgfrit: Tilføj lidt padding for bedre udseende */
-            border: 1px solid #ccc; /* Valgfrit: Tilføj en kant for bedre synlighed */
-        }
-
-        #resultsDiv ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        #resultsDiv li {
-            margin: 10px 0;
-        }
-
-        #resultsDiv a {
-            text-decoration: none;
-            color: blue;
-        }
-
-        #resultsDiv a:hover {
-            text-decoration: underline;
-        }
-
+       
 
     </style>
 </head>
@@ -99,9 +74,50 @@
         </div> <!-- Slut på tredje kolonne -->
     </header>
     
+    
     <h1>Søgeresultater</h1>
-    <div id="resultsDiv"></div>
-   
+    <div id="results"></div>
+
+    <script>
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        function displayResults(query) {
+            const pages = [
+                { title: "Eventudvalget HTX Hillerød", url: "index.html" },
+                { title: "Om os", url: "om.html" },
+                { title: "Eventudvalget klubber", url: "klubber.html" },
+                { title: "Eventudvalget galleri", url: "galleri.html" },
+                { title: "Eventudvalget kalender", url: "kalender.html" }
+            ];
+
+            const results = pages.filter(page => page.title.toLowerCase().includes(query.toLowerCase()));
+
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+
+            if (results.length > 0) {
+                results.forEach(result => {
+                    const link = document.createElement('a');
+                    link.href = result.url;
+                    link.textContent = result.title;
+                    resultsContainer.appendChild(link);
+                    resultsContainer.appendChild(document.createElement('br'));
+                });
+            } else {
+                resultsContainer.innerText = 'Ingen resultater fundet for: ' + query;
+            }
+        }
+
+        const query = getQueryParameter('q');
+        if (query) {
+            displayResults(query);
+        }
+    </script>
+
+
     <script src="script.js"></script>
 </body>
 </html>
