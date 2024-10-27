@@ -1,24 +1,6 @@
 // script.js
 // Hent resultater fra LocalStorage
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('https://api.open-meteo.com/v1/forecast?latitude=55.9279&longitude=12.3008&current=temperature_2m,wind_speed_10m,precipitation&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m')
-        .then(response => response.json())
-        .then(data => {
-            const weatherDataDiv = document.getElementById('weather-data');
-            const current = data.current;
-            const hourly = data.hourly;
-
-            weatherDataDiv.innerHTML = `
-                <h2></h2>
-                <p>Test: ${current.temperature_2m}°C</p>
-                <p>Vindhastighed: ${current.wind_speed_10m} m/s</p>
-                <p>Nedbør: ${current.precipitation} mm</p>      
-            `;
-        })
-        .catch(error => console.error('Error fetching weather data:', error));
-});
-
-document.addEventListener('DOMContentLoaded', function() {
     // Check om brugeren har accepteret cookies og vis banneret hvis ikke
     if (!localStorage.getItem('cookieAccepted')) {
         showCookieBanner();
@@ -116,26 +98,6 @@ function toggleMenu() {
     menu.style.display = menu.style.display === 'block' ? 'none' : 'block'; 
     // Skifter mellem at vise og skjule menuen
 }
-
-
-let slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-}
-
-function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("slide");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    slides[slideIndex-1].style.display = "block";
-}
-
 
 
 function searchSite() {
