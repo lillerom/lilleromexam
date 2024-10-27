@@ -18,50 +18,76 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => console.error('Error fetching weather data:', error));
 });
 
-
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('cookieBanner').classList.add('show');
-});
-document.addEventListener('DOMContentLoaded', function() {
-    const cookieAccepted = localStorage.getItem('cookieAccepted');
-    if (!cookieAccepted) {
-        document.getElementById('cookieBanner').classList.add('show');
+    // Check om brugeren har accepteret cookies og vis banneret hvis ikke
+    if (!localStorage.getItem('cookieAccepted')) {
+        showCookieBanner();
     }
 });
 
-function acceptCookies() {
-    document.getElementById('cookieBanner').classList.remove('show');
+// Funktion til at vise cookie-banneret
+function showCookieBanner() {
+    const cookieBanner = document.getElementById('cookieBanner');
+    cookieBanner.classList.add('show');
+    cookieBanner.style.display = 'block';
+}
+
+// Funktion til at skjule cookie-banneret
+function hideCookieBanner() {
+    const cookieBanner = document.getElementById('cookieBanner');
+    cookieBanner.classList.remove('show');
     setTimeout(function() {
-        document.getElementById('cookieBanner').style.display = 'none';
-    }, 500); // Match the transition duration
+        cookieBanner.style.display = 'none';
+    }, 500); // Matcher transitionens varighed
+}
+
+function acceptCookies() {
+    // Brugeren accepterer cookies, så vi skjuler banneret og gemmer accept
+    hideCookieBanner();
     localStorage.setItem('cookieAccepted', 'true'); // Gem accept i LocalStorage
 }
 
+function declineCookies() {
+    // Brugeren afviser cookies, så vi skjuler banneret og fjerner eventuel accept
+    hideCookieBanner();
+    localStorage.removeItem('cookieAccepted'); // Fjern accept fra LocalStorage
+    localStorage.removeItem('theme'); // Fjern gemt tema fra LocalStorage
+}
 
 // Når siden indlæses, tjekker vi om brugeren allerede har valgt et tema
 window.onload = function() {
-    const savedTheme = localStorage.getItem('theme'); // Tjek gemt tema i LocalStorage
-    const themeStyle = document.getElementById('theme-style'); // Hent <link> til CSS
-    const themeToggle = document.getElementById('theme-toggle'); // Tema-ikonet
-    const logo = document.getElementById('logo'); // Referencer til logoet
-    
-    if (savedTheme) {
-        // Hvis der er gemt et tema, anvend det
-        themeStyle.setAttribute('href', savedTheme);
+    const cookieAccepted = localStorage.getItem('cookieAccepted');
+    if (cookieAccepted) {
+        const savedTheme = localStorage.getItem('theme'); // Tjek gemt tema i LocalStorage
+        const themeStyle = document.getElementById('theme-style'); // Hent <link> til CSS
+        const themeToggle = document.getElementById('theme-toggle'); // Tema-ikonet
+        const logo = document.getElementById('logo'); // Referencer til logoet
+        
+        if (savedTheme) {
+            // Hvis der er gemt et tema, anvend det
+            themeStyle.setAttribute('href', savedTheme);
 
-        // Opdater ikonet og logoet afhængigt af tema
-        if (savedTheme === 'dark.css') {
-            themeToggle.src = 'images/sol.png'; // Ændrer ikonet til sol (mørkt tema aktivt)
-            logo.src = 'images/eventulogodarkmode.png'; // Skift til dark mode logo
-        } else {
-            themeToggle.src = 'images/maane.png'; // Ændrer ikonet til måne (lyst tema aktivt)
-            logo.src = 'images/eventulogo.png'; // Skift til normalt mode logo
+            // Opdater ikonet og logoet afhængigt af tema
+            if (savedTheme === 'dark.css') {
+                themeToggle.src = 'images/sol.png'; // Ændrer ikonet til sol (mørkt tema aktivt)
+                logo.src = 'images/eventulogodarkmode.png'; // Skift til dark mode logo
+            } else {
+                themeToggle.src = 'images/maane.png'; // Ændrer ikonet til måne (lyst tema aktivt)
+                logo.src = 'images/eventulogo.png'; // Skift til normalt mode logo
+            }
         }
     }
 };
 
 // Funktion til at skifte mellem temaer
 function toggleTheme() {
+    const cookieAccepted = localStorage.getItem('cookieAccepted');
+    if (!cookieAccepted) {
+        // Hvis cookies ikke er accepteret, vis cookie-banneret igen
+        showCookieBanner();
+        return;
+    }
+
     const themeStyle = document.getElementById('theme-style');
     const currentTheme = themeStyle.getAttribute('href'); // Tjek hvilket tema der bruges nu
     const themeToggle = document.getElementById('theme-toggle'); // Tema-ikonet
@@ -78,9 +104,10 @@ function toggleTheme() {
         themeStyle.setAttribute('href', 'normal.css');
         localStorage.setItem('theme', 'normal.css'); // Gem valget i LocalStorage
         themeToggle.src = 'images/maane.png'; // Ændrer ikonet til måne for lyst tema
-        logo.src = 'images/eventulogo.png'; // Skift til normalt mode logo
+        logo.src = 'images/eventulogo.png'; // Skift til normalt logo
     }
 }
+
 
 function toggleMenu() { 
     // Funktion til at vise/skjule menuen
