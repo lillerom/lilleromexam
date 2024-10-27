@@ -1,5 +1,3 @@
-// script.js
-// Hent resultater fra LocalStorage
 document.addEventListener('DOMContentLoaded', function() {
     // Check om brugeren har accepteret cookies og vis banneret hvis ikke
     if (!localStorage.getItem('cookieAccepted')) {
@@ -90,7 +88,6 @@ function toggleTheme() {
     }
 }
 
-
 function toggleMenu() { 
     // Funktion til at vise/skjule menuen
     const menu = document.querySelector('.menu'); 
@@ -98,7 +95,6 @@ function toggleMenu() {
     menu.style.display = menu.style.display === 'block' ? 'none' : 'block'; 
     // Skifter mellem at vise og skjule menuen
 }
-
 
 function searchSite() {
     var query = document.getElementById('search').value;
