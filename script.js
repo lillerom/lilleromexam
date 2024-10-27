@@ -160,6 +160,7 @@ const resultsDiv = document.getElementById('results');
 
 // Tjek om der er resultater
 if (results && results.length > 0) {
+    console.log("Resultater fundet:", results);
     results.forEach(result => {
         const link = document.createElement('a');
         link.href = result.url;
@@ -173,5 +174,6 @@ if (results && results.length > 0) {
         resultsDiv.appendChild(description);
     });
 } else {
+    console.log("Ingen resultater fundet.");
     resultsDiv.textContent = 'Ingen resultater fundet.';
 }
