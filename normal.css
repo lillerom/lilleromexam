@@ -98,7 +98,7 @@
         border-radius: 25px; /* Runde hjørner på søgecontaineren. */
         
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tilføjer en svag skygge for dybdeeffekt. */
-        padding: 2px; /* Fjern ekstra padding, der kan forårsage højdeforskel */
+        padding: 1px; /* Fjern ekstra padding, der kan forårsage højdeforskel */
         height: 40px; /* Fast højde for at sikre konsistens */
         
     }
