@@ -118,26 +118,6 @@ function toggleMenu() {
 }
 
 
-async function searchSite() {
-    const query = document.getElementById('search').value.toLowerCase();
-    if (!query) return;
-
-    // Hent JSON-filen med søgedata
-    const response = await fetch('https://lillerom.github.io/lilleromexam/searchData.json');
-    const data = await response.json();
-
-    // Filtrer resultater, der matcher søgeordet
-    const results = data.filter(page => 
-        page.title.toLowerCase().includes(query) || 
-        page.description.toLowerCase().includes(query)
-    );
-
-    // Gem resultaterne i LocalStorage, og åbn en ny side for at vise dem
-    localStorage.setItem('searchResults', JSON.stringify(results));
-    window.open('searchResults.html', '_blank');
-}
-
-
 let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -156,47 +136,65 @@ function showSlides(n) {
     slides[slideIndex-1].style.display = "block";
 }
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
-    const resultsDiv = document.getElementById('resultsDiv');
-    const query = localStorage.getItem('searchQuery');
+    const searchInput = document.getElementById('search');
 
-    if (query) {
-        fetch('searchData.json')
-            .then(response => response.json())
-            .then(data => {
-                console.log('Data loaded:', data); // Debugging
-                const results = search(query, data);
-                console.log('Search results:', results); // Debugging
-                displayResults(results);
-            })
-            .catch(error => console.error('Error loading JSON:', error));
-    } else {
-        resultsDiv.textContent = 'Ingen søgeforespørgsel fundet.';
-    }
-
-    // Funktion til at søge i dataene
-    function search(query, data) {
-        return data.filter(item => item.title.includes(query) || item.description.includes(query));
-    }
-
-    // Funktion til at vise resultaterne
-    function displayResults(results) {
-        resultsDiv.innerHTML = ''; // Ryd tidligere resultater
-        if (results && results.length > 0) {
-            results.forEach(result => {
-                const link = document.createElement('a');
-                link.href = result.url;
-                link.target = '_blank';
-                link.textContent = result.title;
-
-                const description = document.createElement('p');
-                description.textContent = result.description;
-
-                resultsDiv.appendChild(link);
-                resultsDiv.appendChild(description);
-            });
+    window.searchSite = function() {
+        const query = searchInput.value.trim();
+        if (query) {
+            localStorage.setItem('searchQuery', query);
+            window.location.href = 'searchResults.html';
         } else {
-            resultsDiv.textContent = 'Ingen resultater fundet.';
+            alert('Indtast venligst et søgeord.');
+        }
+    };
+
+    // Dette afsnit er kun relevant for searchResults.html
+    if (window.location.pathname.endsWith('searchResults.html')) {
+        const resultsDiv = document.getElementById('resultsDiv');
+        const query = localStorage.getItem('searchQuery');
+        console.log('Search query:', query); // Debugging
+
+        if (query) {
+            fetch('searchData.json')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data loaded:', data); // Debugging
+                    const results = search(query, data);
+                    console.log('Search results:', results); // Debugging
+                    displayResults(results);
+                })
+                .catch(error => console.error('Error loading JSON:', error));
+        } else {
+            resultsDiv.textContent = 'Ingen søgeforespørgsel fundet.';
+        }
+
+        // Funktion til at søge i dataene
+        function search(query, data) {
+            return data.filter(item => item.title.includes(query) || item.description.includes(query));
+        }
+
+        // Funktion til at vise resultaterne
+        function displayResults(results) {
+            resultsDiv.innerHTML = ''; // Ryd tidligere resultater
+            if (results && results.length > 0) {
+                results.forEach(result => {
+                    const link = document.createElement('a');
+                    link.href = result.url;
+                    link.target = '_blank';
+                    link.textContent = result.title;
+
+                    const description = document.createElement('p');
+                    description.textContent = result.description;
+
+                    resultsDiv.appendChild(link);
+                    resultsDiv.appendChild(description);
+                });
+            } else {
+                resultsDiv.textContent = 'Ingen resultater fundet.';
+            }
         }
     }
 });
