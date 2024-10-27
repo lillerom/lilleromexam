@@ -138,65 +138,10 @@ function showSlides(n) {
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('search');
-
-    window.searchSite = function() {
-        const query = searchInput.value.trim();
-        console.log('Search query:', query); // Debugging
-        if (query) {
-            localStorage.setItem('searchQuery', query);
-            console.log('Redirecting to searchResults.html'); // Debugging
-            window.location.href = 'searchResults.html';
-        } else {
-            alert('Indtast venligst et søgeord.');
-        }
-    };
-
-    // Dette afsnit er kun relevant for searchResults.html
-    if (window.location.pathname.endsWith('searchResults.html')) {
-        const resultsDiv = document.getElementById('resultsDiv');
-        const query = localStorage.getItem('searchQuery');
-        console.log('Search query from localStorage:', query); // Debugging
-
-        if (query) {
-            fetch('searchData.json')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Data loaded:', data); // Debugging
-                    const results = search(query, data);
-                    console.log('Search results:', results); // Debugging
-                    displayResults(results);
-                })
-                .catch(error => console.error('Error loading JSON:', error));
-        } else {
-            resultsDiv.textContent = 'Ingen søgeforespørgsel fundet.';
-        }
-
-        // Funktion til at søge i dataene
-        function search(query, data) {
-            return data.filter(item => item.title.includes(query) || item.description.includes(query));
-        }
-
-        // Funktion til at vise resultaterne som en liste med links
-        function displayResults(results) {
-            resultsDiv.innerHTML = ''; // Ryd tidligere resultater
-            if (results && results.length > 0) {
-                const ul = document.createElement('ul');
-                results.forEach(result => {
-                    const li = document.createElement('li');
-                    const link = document.createElement('a');
-                    link.href = result.url;
-                    link.target = '_blank';
-                    link.textContent = result.title;
-
-                    li.appendChild(link);
-                    ul.appendChild(li);
-                });
-                resultsDiv.appendChild(ul);
-            } else {
-                resultsDiv.textContent = 'Ingen resultater fundet.';
-            }
-        }
+function searchSite() {
+    var query = document.getElementById('search').value;
+    if (query) {
+        window.location.href = 'searchResults.html?q=' + encodeURIComponent(query);
     }
-});
+    return false; // Forhindrer formens standardindsendelse
+}
