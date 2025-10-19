@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <title>Forholdsord</title>
+  <link id="theme-style" rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/iaikon.png" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+    #gameArea {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background-color: #1A1C2B;
+    }
+    .word {
+      position: absolute;
+      font-size: 24px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.5s ease;
+    }
+    .spin {
+      animation: spin 0.5s linear;
+      color: red
+    }
+    .expand {
+      transform: scale(1.5);
+      color: green; 
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    #scoreBoard {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 20px;
+      background: rgb(6, 6, 6);
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    #winMessage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 32px;
+      background: rgb(6, 6, 6);
+      padding: 20px;
+      border-radius: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+ <header class="header">
+        <!-- Første kolonne: Logo -->
+        <div class="column column-1">
+            <a href="../loggedin.html">
+                <img id="logo" src="../images/logohvid.png" alt="Logo" class="logo">
+            </a>
+        </div>
+        
+        <!-- Anden kolonne: Titel -->
+        <div class="column column-2">
+            <div class="title">
+                <h1>Fang forholdsord</h1>
+            </div>
+        </div>
+        
+    </header>
+  <div id="gameArea">
+    <div id="scoreBoard">Point: 0</div>
+    <div id="winMessage">Du har vundet!</div>
+  </div>
+
+  <script>
+    const correctWords = ["til", "fra", "under", "før", "ved siden af"];
+    const wrongWords = ["hans", "sommer", "hun", "købe", "middag"];
+    let score = 0;
+    let gameOver = false;
+
+    function updateScore(points) {
+      score += points;
+      document.getElementById("scoreBoard").textContent = `Point: ${score}`;
+      if (score >= 10 && !gameOver) {
+        gameOver = true;
+        document.getElementById("winMessage").style.display = "block";
+      }
+    }
+
+    function spawnWord() {
+      if (gameOver) return;
+
+      const isCorrect = Math.random() < 0.5;
+      const word = isCorrect
+        ? correctWords[Math.floor(Math.random() * correctWords.length)]
+        : wrongWords[Math.floor(Math.random() * wrongWords.length)];
+
+      const wordElem = document.createElement("div");
+      wordElem.className = "word";
+      wordElem.textContent = word;
+      wordElem.style.left = Math.random() * window.innerWidth + "px";
+      wordElem.style.top = "0px";
+      wordElem.dataset.correct = isCorrect;
+
+      document.getElementById("gameArea").appendChild(wordElem);
+
+      wordElem.addEventListener("click", () => {
+        const isCorrect = wordElem.dataset.correct === "true";
+        if (isCorrect) {
+          wordElem.classList.add("expand");
+          updateScore(1);
+        } else {
+          wordElem.classList.add("spin");
+          updateScore(-1);
+        }
+        setTimeout(() => wordElem.remove(), 500);
+      });
+
+      let position = 0;
+      const fallSpeed = 2 + Math.random() * 3;
+      const interval = setInterval(() => {
+        position += fallSpeed;
+        wordElem.style.top = position + "px";
+        if (position > window.innerHeight) {
+          wordElem.remove();
+          clearInterval(interval);
+        }
+      }, 30);
+    }
+
+    setInterval(spawnWord, 1000);
+  </script>
+</body>
+</html>

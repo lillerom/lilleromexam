@@ -1,0 +1,90 @@
+
+    body {
+        background-color: #1A1C2B;
+        color: #B2DFD3;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+        overflow-x: hidden; /* Forhindrer horisontal scrolling */
+    }
+    
+    .header {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr; /* Definerer layoutet med tre kolonner i forholdene 1:3:1. */
+        align-items: center; /* Vertikalt centrerer elementerne i hver kolonne. */
+        justify-items: center; /* Horisontalt centrerer elementerne i hver kolonne. */
+        position: relative; /* Elementet placeres i forhold til dets normale position, og man kan flytte det med `top`, `left`, `right`, eller `bottom`. Bruges ofte som referencepunkt for børn med `position: absolute`. */
+        height: fit-content;
+        gap: 10px;
+    }
+
+    .logo {
+        display: flex; /* Gør containeren fleksibel */
+        max-width: 100%; /* Sørger for, at billedet ikke overstiger forælderens bredde */
+        height: auto; /* Bevarer billedets proportioner */
+        align-items: center; /* Centrerer indholdet lodret */
+        justify-content: center; /* Centrerer indholdet vandret */
+        width: 100%; /* Fylder hele bredden af containeren */
+    }
+
+
+    .title {
+        
+        font-size: 1.5em;
+        
+    }
+    
+
+    footer {
+        background-color: #1A1C2B;
+        color: #B2DFD3;
+        text-align: center;
+        padding: 10px;
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+    }
+    
+    footer a {
+        color: #88C4DE;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+        color: #64C295;
+    }
+     /* Layout for mindre skærme */
+     @media (max-width: 900px) {
+        .header {
+            display: grid;
+            grid-template-columns: 1fr; /* Definerer layoutet med 1 kolonne på små skærme*/
+            align-items: center; /* Vertikalt centrerer elementerne i hver kolonne. */
+            justify-items: center; /* Horisontalt centrerer elementerne i hver kolonne. */
+            /* position: relative; Elementet placeres i forhold til dets normale position, og man kan flytte det med `top`, `left`, `right`, eller `bottom`. Bruges ofte som referencepunkt for børn med `position: absolute`. */
+            height: fit-content;
+            margin: 40px;
+        }
+        
+        .title {
+            display: none; 
+        }
+       
+        /* Resten af indholdet i en kolonne */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            padding: 10px;
+        }
+    
+        .empty {
+            display: none; /* Skjuler .empty klassen */
+        }
+        .menu {
+            top: 110px;
+        }
+        
+    }

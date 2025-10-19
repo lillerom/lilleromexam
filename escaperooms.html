@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="da">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interakt forside</title>
+    <link id="theme-style" rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/iaikon.png" type="image/x-icon">
+    <style>
+              
+    </style>
+    </head>
+        
+<body>
+    <header class="header">
+        <!-- Første kolonne: Logo -->
+        <div class="column column-1">
+            <a href="index.html">
+                <img id="logo" src="images/logohvid.png" alt="Logo" class="logo">
+            </a>
+        </div>
+        
+        <!-- Anden kolonne: Titel -->
+        <div class="column column-2">
+            <div class="title">
+                <h1>Escaperooms</h1>
+            </div>
+        </div>
+        
+        <!-- Tredje kolonne: Nested kolonner -->
+        <div class="column column-3">
+            <div class="nested-columns">
+                
+                <!-- Første nested kolonne: Tema-knap -->
+                <div class="nested-column nested-column-1">
+                    <div class="container">
+                        <div class="image">
+                            <img id="theme-toggle" src="images/maane.png" alt="Skift Tema" onclick="toggleTheme()">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Anden nested kolonne: Søgefelt -->
+                <div class="nested-column nested-column-2">
+                    <div class="search-container">
+                        <form onsubmit="return searchSite()">
+                            <input type="text" id="search" placeholder="Søg på siden...">
+                            <button type="submit">Søg</button>
+                        </form>
+                    </div>
+                </div>
+                
+                
+                <!-- Tredje nested kolonne: Hamburger-menu -->
+                <div class="nested-column nested-column-3">
+                    <div class="hamburger" onclick="toggleMenu()"> <!-- Hamburger-ikon med klikfunktion -->
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="menu" id="menu"> <!-- Menu der åbner med hamburgeren -->
+                        <ul>
+                            <li><a href="index.html">Forside</a></li> <!-- Menu link 1 -->
+                            <li><a href="escaperooms.html">Escaperooms</a></li> <!-- Menu link 2 -->
+                            <li><a href="spil.html">Spil</a></li> <!-- Menu link 3 -->
+                            <li><a href="quizzer.html">Quizzer</a></li> <!-- Menu link 4 -->
+                            <li><a href="test.html">Test</a></li> <!-- Menu link 5 -->
+                            <li><a href="visual.html">Visual Novels</a></li> <!-- Menu link 6 -->
+                            <li><a href="../om.html">Om Interakt</a></li> <!-- Menu link 7 -->
+                        </ul>
+                    </div>
+                </div> <!-- Slut på tredje nested kolonne -->
+                
+            </div> <!-- Slut på nested kolonner -->
+        </div> <!-- Slut på tredje kolonne -->
+        
+    </header>
+    
+    
+    
+   
+    <main class="grid-container">
+        <!-- Centreret header i main -->
+        <div class="grid-item empty"></div>
+        <div class="grid-item">
+            <h2>Escaperoom 1</h2> <!-- H2 i første grid-item -->
+            <a href="escaperoomside1.html">
+                <img src="images/braetspilscafeen.png" alt="Brætspilscaféen"> <!-- Billede i første grid-item -->
+            </a>
+            <p>room 1</p> <!-- Beskrivelse i første grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Escaperoom 2</h2> <!-- H2 i anden grid-item -->
+            <a href="klubgokart.html">
+                <img src="images/gokart.png" alt="Gokartklubben"> <!-- Billede i anden grid-item -->
+            </a>
+            <p>room 2</p> <!-- Beskrivelse i anden grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Escaperoom 3</h2> <!-- H2 i tredje grid-item -->
+            <a href="klubkrea.html">
+                <img src="images/krea.png" alt="Kreaklubben"> <!-- Billede i tredje grid-item -->
+            </a>
+            <p>room 3</p> <!-- Beskrivelse i tredje grid-item -->
+        </div>
+        <div class="grid-item empty"></div>
+        <div class="grid-item empty"></div>
+
+        <!-- Kopieret sektion -->
+        <div class="grid-item">
+            <h2>Room 4</h2> <!-- H2 i første grid-item -->
+            <a href="../klubrobot.html">
+                <img src="images/robot.png" alt="Robotklubben"> <!-- Billede i første grid-item -->
+            </a>
+            <p>room 4</p> <!-- Beskrivelse i første grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Room 5</h2> <!-- H2 i anden grid-item -->
+            <a href="../klubvolley.html">
+                <img src="images/volley.png" alt="Volleyballklubben"> <!-- Billede i anden grid-item -->
+            </a>
+            <p>room 5</p> <!-- Beskrivelse i anden grid-item -->
+        </div>
+        <div class="grid-item">
+            <h2>Room 6</h2> <!-- H2 i tredje grid-item -->
+            <a href="klubdnd.html">
+                <img src="images/dnd.png" alt="Dungeons and Dragons"> <!-- Billede i tredje grid-item -->
+            </a>
+            <p>room 6</p> <!-- Beskrivelse i tredje grid-item -->
+        </div>
+        <div class="grid-item empty"></div>
+       
+        
+
+    </main>
+
+   <footer>
+        <p>Skriv til Interakt <a href="mailto:linda.rom@hotmail.com">interakt@interakt.dk</a></p>
+    </footer>
+    
+    <!-- HTML til cookie-banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <p>Vi bruger cookies til at forbedre din oplevelse. Vil du acceptere cookies?</p>
+        <button onclick="acceptCookies()">Ja tak</button>
+        <button onclick="declineCookies()">Nej tak</button>
+    </div>
+
+    
+ 
+    <script src="script.js"></script> 
+</body>
+
+</html>

@@ -1,0 +1,278 @@
+
+    body {
+        background-color: #1A1C2B;
+        color: #B2DFD3;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+        overflow-x: hidden; /* Forhindrer horisontal scrolling */
+    }
+    
+    .header {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr; /* Definerer layoutet med tre kolonner i forholdene 1:3:1. */
+        align-items: center; /* Vertikalt centrerer elementerne i hver kolonne. */
+        justify-items: center; /* Horisontalt centrerer elementerne i hver kolonne. */
+        position: relative; /* Elementet placeres i forhold til dets normale position, og man kan flytte det med `top`, `left`, `right`, eller `bottom`. Bruges ofte som referencepunkt for børn med `position: absolute`. */
+        height: fit-content;
+        gap: 10px;
+    }
+
+    .logo {
+        display: flex; /* Gør containeren fleksibel */
+        max-width: 100%; /* Sørger for, at billedet ikke overstiger forælderens bredde */
+        height: auto; /* Bevarer billedets proportioner */
+        align-items: center; /* Centrerer indholdet lodret */
+        justify-content: center; /* Centrerer indholdet vandret */
+        width: 100%; /* Fylder hele bredden af containeren */
+    }
+
+
+    .title {
+        
+        font-size: 1.5em;
+        
+    }
+    
+    
+    .nested-columns {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr; /* Definerer tre kolonner inde i kolonne 3 med størrelsesforholdene 1:3:1*/
+        gap: 5px; /* Laver lidt mellemrum mellem de nested kolonner, for at forhindre dem i at være for tæt på hinanden. */
+        max-width: 100%; /* Sørger for, at de nested kolonner ikke overskrider deres forælder containers bredde. */
+    }
+
+   
+    #theme-toggle {
+        width: auto; /* Bredde justeres automatisk baseret på billedets størrelse. */
+        height: 40px; /* Fast højde på tema-knappen. */
+        cursor: pointer; /* Skifter musemarkøren til en pointer, hvilket indikerer, at elementet er klikbart. */
+        transition: opacity 0.5s ease, transform 0.5s ease; /* Gør overgange for både opacity og transform glidende over 0.5 sekunder. */
+        margin-right: 5px;
+    }
+
+    #theme-toggle:hover {
+        transform: scale(1.2); /* Forstørrer tema-knappen en smule ved hover. */
+    }
+
+    .search-container {
+        display: flex;
+        align-items: center; /* Vertikal centring af elementerne i søgefeltet. */
+        justify-content: center; /* Horisontal centring af hele søgecontaineren. */
+        background-color: #f1f1f1; /* Lysegrå baggrund for søgecontaineren. */
+        border-radius: 25px; /* Runde hjørner på søgecontaineren. */
+        
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tilføjer en svag skygge for dybdeeffekt. */
+        padding: 0; /* Fjern ekstra padding, der kan forårsage højdeforskel */
+        height: 40px; /* Fast højde for at sikre konsistens */
+        
+    }
+
+    .search-container input {
+        border: none; /* Ingen kantlinje omkring inputfeltet. */
+        outline: none; /* Fjerner den standard omrids, der normalt vises, når inputfeltet er i fokus. */
+        background: none; /* Ingen baggrund for inputfeltet. */
+        
+        font-size: 1em; /* Skriftstørrelse i inputfeltet. */
+        color: #333; /* Skriftfarve i inputfeltet. */
+        flex: 1; /* Gør inputfeltet fleksibelt */
+        
+        max-width: 130px;
+        height: 100%; /* Sørg for, at inputfeltet fylder hele højden af .search-container */
+        padding: 0 10px; /* Juster padding, så inputfeltet ikke øger højden */
+        margin: 0; /* Fjern ekstra marginer */
+}
+        
+    
+
+    .search-container button {
+        border: none; /* Ingen kantlinje for knappen. */
+        background-color: #041A4B; /* Mørkeblå baggrundsfarve. */
+        color: white; /* Hvid tekstfarve for knappen. */
+        padding: 5px 15px; /* Indvendig plads i knappen, som skaber plads mellem tekst og kant. */
+        border-radius: 20px; /* Runde hjørner på knappen. */
+        cursor: pointer; /* Skifter markøren til en pointer ved hover, hvilket viser, at det er klikbart. */
+        transition: background-color 0.3s ease; /* Gør farveskift ved hover glidende. */
+        height: 100%; /* Sørg for, at knappen fylder hele højden af .search-container */
+        margin-right: 2px;
+            
+        
+    }
+
+
+    .search-container button:hover {
+        background-color: #0183BF; /* Lysere blå baggrund ved hover. */
+    }
+
+    .menu {
+        display: none;
+        position: absolute;
+        top: 10px;
+        right: 0;
+        margin-top: 100px; /* Flytter menuen yderligere 40px ned */
+        background-color: #B2DFD3;
+        padding: 10px;
+        width: auto;
+        min-width: 150px;
+        z-index: 1000;
+    }
+    .menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .menu li {
+        margin: 10px 0;
+    }
+    .menu a {
+        color:#1A1C2B;
+        text-decoration: none;
+    }
+    .hamburger {
+        cursor: pointer;
+        padding: 5px; /* Indvendig polstring omkring hamburgeren */
+        position: relative; /* Sikrer, at menuen åbner korrekt i forhold til hamburgeren */
+       /* background-color: #041A4B; Baggrundsfarve for hamburgeren */
+        z-index: 1001; /* Sørg for, at hamburgeren vises ovenfor menuen */
+        
+    }
+    .hamburger div {
+        width: 26px;
+        height: 3px;
+        background-color: #B2DFD3;
+        margin: 5px;
+        transition: background-color 0.3s ease;
+    }
+    .hamburger:hover div {
+        border-color:#64C295;
+        background-color: #64C295;
+    }
+    
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr repeat(3, 1fr) 1fr;
+        gap: 10px;
+        padding: 10px;
+        flex: 1;
+    }
+   
+    .main-header {
+        grid-column: span 3;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    main {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    }
+
+    .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    }
+
+    .kolonne {
+    padding: 10px;
+    }
+
+    .kolonne.midte {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    input, button {
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    }
+
+    #fejlbesked {
+    color: red;
+    margin-top: 10px;
+    display: none;
+    }
+
+   
+    .grid-item {
+        /*background-color: #041A4B;*/
+        /*color: #B2DFD3;*/
+        padding: 10px;
+        text-align: center;
+        border-radius: 10px;
+    }
+    .empty {
+        background-color: transparent;
+        border: none;
+    }
+
+    .grid-item img {
+        max-width: 100%;
+        height: auto;
+        border: 7px solid #B2DFD3;
+        border-radius: 70px;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .grid-item img:hover {
+        transform: scale(1.05);
+        border-color:#64C295;
+    }
+
+    footer {
+        background-color: #1A1C2B;
+        color: #B2DFD3;
+        text-align: center;
+        padding: 10px;
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+    }
+    
+    footer a {
+        color: #88C4DE;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+        color: #64C295;
+    }
+     /* Layout for mindre skærme */
+     @media (max-width: 900px) {
+        .header {
+            display: grid;
+            grid-template-columns: 1fr; /* Definerer layoutet med 1 kolonne på små skærme*/
+            align-items: center; /* Vertikalt centrerer elementerne i hver kolonne. */
+            justify-items: center; /* Horisontalt centrerer elementerne i hver kolonne. */
+            /* position: relative; Elementet placeres i forhold til dets normale position, og man kan flytte det med `top`, `left`, `right`, eller `bottom`. Bruges ofte som referencepunkt for børn med `position: absolute`. */
+            height: fit-content;
+            margin: 40px;
+        }
+        
+        .title {
+            display: none; 
+        }
+       
+        /* Resten af indholdet i en kolonne */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            padding: 10px;
+        }
+    
+        .empty {
+            display: none; /* Skjuler .empty klassen */
+        }
+        .menu {
+            top: 110px;
+        }
+        
+    }

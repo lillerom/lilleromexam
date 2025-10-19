@@ -31,10 +31,44 @@
         <div class="column column-3">
             <div class="nested-columns">
                 
+                <!-- Første nested kolonne: Tema-knap -->
+                <div class="nested-column nested-column-1">
+                    <div class="container">
+                        <div class="image">
+                            <img id="theme-toggle" src="images/maane.png" alt="Skift Tema" onclick="toggleTheme()">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Anden nested kolonne: Søgefelt -->
+                <div class="nested-column nested-column-2">
+                    <div class="search-container">
+                        <form onsubmit="return searchSite()">
+                            <input type="text" id="search" placeholder="Søg på siden...">
+                            <button type="submit">Søg</button>
+                        </form>
+                    </div>
+                </div>
                 
                 
                 <!-- Tredje nested kolonne: Hamburger-menu -->
-                <div>
+                <div class="nested-column nested-column-3">
+                    <div class="hamburger" onclick="toggleMenu()"> <!-- Hamburger-ikon med klikfunktion -->
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="menu" id="menu"> <!-- Menu der åbner med hamburgeren -->
+                        <ul>
+                            <li><a href="loggedin.html">Forside</a></li> <!-- Menu link 1 -->
+                            <li><a href="dansk.html">Dansk</a></li> <!-- Menu link 2 -->
+                            <li><a href="underconstruction.html">Engelsk</a></li> <!-- Menu link 3 -->
+                            <li><a href="underconstruction.html">Historie</a></li> <!-- Menu link 4 -->
+                            <li><a href="underconstruction.html">Matematik</a></li> <!-- Menu link 5 -->
+                            <li><a href="underconstruction.html">Samfundsfag</a></li> <!-- Menu link 6 -->
+                            <li><a href="om.html">Om Interakt</a></li> <!-- Menu link 7 -->
+                        </ul>
+                    </div>
                 </div> <!-- Slut på tredje nested kolonne -->
                 
             </div> <!-- Slut på nested kolonner -->
@@ -47,21 +81,21 @@
         <div class="grid-item empty"></div>
         <div class="grid-item">
             <h2>Dansk</h2> <!-- H2 i første grid-item -->
-            <a href="loginside.html">
+            <a href="dansk.html">
                 <img src="images/dansk.png" alt="kreativt billede"> <!-- Billede i første grid-item -->
             </a>
             <p></p> <!-- Beskrivelse i første grid-item -->
         </div>
         <div class="grid-item">
             <h2>Engelsk</h2> <!-- H2 i anden grid-item -->
-            <a href="loginside.html">
+            <a href="underconstruction.html">
                 <img src="images/engelsk.png" alt="festpynt"> <!-- Billede i anden grid-item -->
             </a>
             <p></p> <!-- Beskrivelse i anden grid-item -->
         </div>
         <div class="grid-item">
             <h2>Historie</h2> <!-- H2 i tredje grid-item -->
-            <a href="loginside.html">
+            <a href="underconstruction.html">
                 <img src="images/historie.png" alt="halloweencafé"> <!-- Billede i tredje grid-item -->
             </a>
             <p></p> <!-- Beskrivelse i tredje grid-item -->
@@ -72,14 +106,14 @@
         <!-- Kopieret sektion -->
         <div class="grid-item">
             <h2>Matematik</h2> <!-- H2 i første grid-item -->
-            <a href="loginside.html">
+            <a href="underconstruction.html">
                 <img src="images/matematik.png" alt="galla"> <!-- Billede i første grid-item -->
             </a>
             <p>Test</p> <!-- Beskrivelse i første grid-item -->
         </div>
         <div class="grid-item">
             <h2>Samfundsfag</h2> <!-- H2 i første grid-item -->
-            <a href="loginside.html">
+            <a href="underconstruction.html">
                 <img src="images/samfundsfag.png" alt="Kalender"> <!-- Billede i første grid-item -->
             </a>
             <p></p> <!-- Beskrivelse i første grid-item -->
@@ -103,12 +137,7 @@
         <p>Skriv til Interakt <a href="mailto:linda.rom@hotmail.com">interakt@interakt.dk</a></p>
     </footer>
     
-    <!-- HTML til cookie-banner -->
-    <div id="cookieBanner" class="cookie-banner">
-        <p>Vi bruger cookies til at forbedre din oplevelse. Vil du acceptere cookies?</p>
-        <button onclick="acceptCookies()">Ja tak</button>
-        <button onclick="declineCookies()">Nej tak</button>
-    </div>
+  
 
 
     <script src="script.js"></script> 

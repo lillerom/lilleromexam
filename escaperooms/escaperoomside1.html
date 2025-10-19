@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="da">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyrdinden og skorstensfejerens</title>
+    <link id="theme-style" rel="stylesheet" href="style.css">
+    <link rel="icon" href="../images/iaikon.png" type="image/x-icon">
+    <style>
+              
+    </style>
+    </head>
+        
+<body>
+    <header class="header">
+        <!-- Første kolonne: Logo -->
+        <div class="column column-1">
+            <a href="loggedin.html">
+                <img id="logo" src="../images/logohvid.png" alt="Logo" class="logo">
+            </a>
+        </div>
+        
+        <!-- Anden kolonne: Titel -->
+        <div class="column column-2">
+            <div class="title">
+                <h1>Escaperoom</h1>
+            </div>
+        </div>
+        
+        
+        
+    </header>
+    
+    
+    
+   
+    <main>
+    
+
+        <div class="grid-container">
+            <div class="kolonne"></div>
+            <div class="kolonne midte"><!-- Alt indhold her -->
+                        <h2>Hyrdinden og skorstensfejeren</h2>
+                        <p>Af H. C. Andersen </p>
+                        <p>Har du nogensinde set et rigtig gammelt træskab, ganske sort af alderdom og skåret ud med snirkler og løvværk? Just sådant et stod der i en dagligstue, det var arvet fra oldemoder, og udskåret med roser og tulipaner fra øverst til nederst; der var de underligste snirkler og mellem dem stak små hjorte hovedet frem med mange takker, men midt på skabet stod snittet en hel mand, han var rigtignok grinagtig at se på og grine gjorde han, man kunne ikke kalde det at le, han havde gedebukkeben, små horn i panden og et langt skæg. Børnene i stuen kaldte ham altid gedebukkebens-overogundergeneral­krigskommander­sergenten, for det var et svært navn at sige, og der er ikke mange der får den titel; men at lade ham skære ud det var også noget. Dog nu var han der jo! altid så han hen til bordet under spejlet, for der stod en yndig lille hyrdinde af porcelæn; skoene var forgyldt, kjolen nydelig hæftet op med en rød rose og så havde hun guldhat og hyrdestav; hun var dejlig. Tæt ved hende stod en lille skorstensfejer, så sort som et kul, men i øvrigt også af porcelæn; han var lige så ren og pæn som nogen anden, at han var skorstensfejer, det var jo bare noget han forestillede, porcelænsmageren kunne lige så godt have gjort en prins af ham, for det var ét!</p>
+                        <br>
+                        <p>Hvem var træskabet arvet fra?</p>
+                        <input type="text" id="userInput" placeholder="Skriv her">
+                        <button onclick="checkInput()">Svar</button>
+                        <p id="fejlbesked">Forkert svar. Prøv igen.</p>
+                        
+             </div>
+            <div class="kolonne"></div>
+        </div>
+
+    </main>
+
+   <footer>
+        <p>Skriv til Interakt <a href="mailto:linda.rom@hotmail.com">interakt@interakt.dk</a></p>
+    </footer>
+    
+   
+    <script> function checkInput() {
+      const input = document.getElementById("userInput");
+      const fejlbesked = document.getElementById("fejlbesked");
+      const korrektSvar = "oldemoder"; // ← Skift dette til det korrekte svar
+
+      if (input.value.trim().toLowerCase() === korrektSvar.toLowerCase()) {
+        window.location.href = "escaperoomside2.html"; // ← Skift til den ønskede side
+      } else {
+        input.value = "";
+        fejlbesked.style.display = "block";
+      }
+    }
+    </script> 
+</body>
+
+</html>

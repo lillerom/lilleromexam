@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="da">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loginside</title>
+    <link id="theme-style" rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/iaikon.png" type="image/x-icon">
+    <style>
+              
+    </style>
+    </head>
+        
+<body>
+    <header class="header">
+        <!-- Første kolonne: Logo -->
+        <div class="column column-1">
+            <a href="index.html">
+                <img id="logo" src="images/logohvid.png" alt="Logo" class="logo">
+            </a>
+        </div>
+        
+        <!-- Anden kolonne: Titel -->
+        <div class="column column-2">
+            <div class="title">
+                <h1>Log ind for at fortsætte</h1>
+            </div>
+        </div>
+        
+        
+        
+    </header>
+    
+    
+    
+   
+    <main>
+        <div class="grid-container">
+            <div class="kolonne"></div>
+                <div class="kolonne midte"><!-- Alt indhold her -->
+                        <h2>Kontakt os hvis du endnu ikke har et login.</h2>
+                        <p>Men du kan prøve gratis med kodeordet "interakt"</p>
+                        <input type="text" id="userInput" placeholder="Skriv interakt her">
+                        <button onclick="checkInput()">Login</button>
+                        <p id="fejlbesked" style="display:none;">Kodeordet er "interakt". Prøv igen.</p>
+                </div>
+            <div class="kolonne"></div>
+        </div>
+
+    </main>
+
+   <footer>
+        <p>Skriv til Interakt <a href="mailto:linda.rom@hotmail.com">interakt@interakt.dk</a></p>
+    </footer>
+    
+   
+   <script>
+  function checkInput() {
+    const input = document.getElementById("userInput");
+    const fejlbesked = document.getElementById("fejlbesked");
+    const korrektSvar = "interakt";
+
+    if (input.value.trim().toLowerCase() === korrektSvar.toLowerCase()) {
+      fejlbesked.style.display = "none"; // skjul fejlbesked hvis korrekt
+      window.location.href = "loggedin.html";
+    } else {
+      input.value = "";
+      fejlbesked.style.display = "block";
+    }
+  }
+</script>
+
+</body>
+
+</html>

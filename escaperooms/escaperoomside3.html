@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="da">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyrdinden og skorstensfejerens side 2</title>
+    <link id="theme-style" rel="stylesheet" href="style.css">
+    <link rel="icon" href="../images/iaikon.png" type="image/x-icon">
+    <style>
+              
+    </style>
+    </head>
+        
+<body>
+    <header class="header">
+        <!-- Første kolonne: Logo -->
+        <div class="column column-1">
+            <a href="../index.html">
+                <img id="logo" src="../images/logohvid.png" alt="Logo" class="logo">
+            </a>
+        </div>
+        
+        <!-- Anden kolonne: Titel -->
+        <div class="column column-2">
+            <div class="title">
+                <h1>Rigtigt!</h1>
+            </div>
+        </div>
+        
+        
+    </header>
+    
+    
+    
+   
+    <main>
+    
+    
+
+        <div class="grid-container">
+            <div class="kolonne"></div>
+            <div class="kolonne midte"><!-- Alt indhold her -->
+                        <h2>Hyrdinden og skorstensfejeren</h2>
+                        <p>Af H. C. Andersen </p>
+                        <p>Der stod han med sin stige så nydeligt, og med et ansigt, så hvidt og rødt, som en pige og det var egentligt en fejl, for lidt sort kunne han gerne have været. Han stod ganske nær ved hyrdinden; de var begge to stillet hvor de stod, og da de nu var stillet, så havde de forlovet sig, de passede jo for hinanden, de var unge folk, de var af samme porcelæn og begge lige skrøbelige.</p>
+                        <br>
+                        <p>Tæt ved dem stod der nok en dukke, der var tre gange større, det var en gammel kineser, som kunne nikke; han var også af porcelæn og sagde at han var bedstefader til den lille hyrdinde, men det kunne han nok ikke bevise, han påstod at han havde magt over hende, og derfor havde han nikket til gedebukkebens-overogundergeneral­krigskommander­sergenten, der friede til den lille hyrdinde.</p>
+                        <br>
+                        <p>"Der får du en mand," sagde den gamle kineser, "en mand, som jeg næsten tror er af mahognitræ, han kan gøre dig til gedebukkebens-overogundergeneral­krigskommander­sergentinde, han har hele skabet fuldt af sølvtøj, foruden hvad han har i de hemmelige gemmer!"</p>
+                        <br>
+                        <p>Hvem ville kineseren have at gedebukkebens-overogundergeneral­krigskommander­sergenten giftede sig med?</p>
+                        <input type="text" id="userInput" placeholder="Skriv her">
+                        <button onclick="checkInput()">Svar</button>
+                        <p id="fejlbesked">Forkert svar. Prøv igen.</p>
+                        
+             </div>
+            <div class="kolonne"></div>
+        </div>
+
+
+       
+
+    
+
+
+    </main>
+
+   <footer>
+        <p>Skriv til Interakt <a href="mailto:linda.rom@hotmail.com">interakt@interakt.dk</a></p>
+    </footer>
+    
+    
+ 
+    <script>
+        function checkInput() {
+      const input = document.getElementById("userInput");
+      const fejlbesked = document.getElementById("fejlbesked");
+      const korrektSvar = "hyrdinden"; // ← Skift dette til det korrekte svar
+
+      if (input.value.trim().toLowerCase() === korrektSvar.toLowerCase()) {
+        window.location.href = "escaperoomside3.html"; // ← Skift til den ønskede side
+      } else {
+        input.value = "";
+        fejlbesked.style.display = "block";
+      }
+    }
+    </script> 
+</body>
+
+</html>
